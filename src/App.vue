@@ -1,11 +1,13 @@
 <script>
   import AppHeader from './components/AppHeader.vue';
-  import AppMain from './components/AppMain.vue'
-  import AppFooter from './components/AppFooter.vue'
+  import AppFooter from './components/AppSidebar.vue';
+  import AppMain from './components/AppMain.vue';
+  import AppSidebar from './components/AppFooter.vue';
 
   export default {
     components: {
       AppHeader,
+      AppSidebar,
       AppMain,
       AppFooter
     },
@@ -14,16 +16,20 @@
 
 <template>
 
-  <div>
-    <AppHeader />
-  </div>
+  <div class="position-relative">
+    <div>
+      <AppHeader />
+    </div>
+    <div>
+      <AppSidebar />
+    </div>
+    <div>
+      <AppMain />
+    </div>
 
-  <div>
-    <AppMain />
-  </div>
-
-  <div>
-    <AppFooter />
+    <div>
+      <AppFooter />
+    </div>
   </div>
 
 </template>

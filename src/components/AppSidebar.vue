@@ -1,6 +1,6 @@
 <script>
     export default {
-        name: "AppFooter",
+        name: "AppSidebar",
         data() {
             return {
 
@@ -10,9 +10,9 @@
 </script>
 
 <template>
-    <div class="custom-footer position-fixed container-fluid m-0 p-0 d-sm-none">
-        <div class="row h-100">
-            <div class="col d-flex justify-content-around align-items-center">
+    <div class="custom-sidebar position-fixed align-items-center justify-content-center container-fluid vh-100 m-0 p-0">
+        <div class="row h-50">
+            <div class="col flex-column d-flex justify-content-around align-items-center">
                 <div class="custom-wrapper d-flex justify-content-center align-items-center">
                     <i class="fa-solid text-white fa-house fs-3 custom-icon"></i>
                 </div>
@@ -32,15 +32,22 @@
 
 <style scoped lang="scss">
 @import "../variables.scss";
-    .custom-footer{
-        bottom: 0;
-        background:#f8f8f8;
-        height: 80px;
+
+    @media screen and (max-width: 576px) {
+        .custom-sidebar{
+            display: none !important; 
+        }
+    }
+    .custom-sidebar{
+        display:flex;
+        left: 0;
+        width: 100px;
+        background:$light-orange;
         -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.199); 
         box-shadow: 2px 5px 15px 5px rgba(0, 0, 0, 0.219);
 
         .custom-icon{
-            color: #F96A5F;
+            color: #ffffffd3;
         }
 
         .custom-wrapper{
