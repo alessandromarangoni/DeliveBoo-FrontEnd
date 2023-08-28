@@ -3,12 +3,14 @@
   import AppFooter from './components/AppSidebar.vue';
   import AppMain from './components/AppMain.vue';
   import AppSidebar from './components/AppFooter.vue';
+  import AppSection1 from './components/main-sections/AppSection1.vue'
 
   export default {
     components: {
       AppHeader,
       AppSidebar,
       AppMain,
+      AppSection1,
       AppFooter
     },
   }
@@ -26,7 +28,9 @@
     <div>
       <AppMain />
     </div>
-
+    <div>
+      <AppSection1 />
+    </div>
     <div>
       <AppFooter />
     </div>
