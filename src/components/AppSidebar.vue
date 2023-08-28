@@ -2,8 +2,8 @@
     export default {
         name: "AppSidebar",
         data() {
-            return {
-
+            return{
+                
             }
         }
     }

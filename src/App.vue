@@ -1,8 +1,8 @@
 <script>
   import AppHeader from './components/AppHeader.vue';
-  import AppFooter from './components/AppSidebar.vue';
+  import AppSidebar from './components/AppSidebar.vue';
   import AppMain from './components/AppMain.vue';
-  import AppSidebar from './components/AppFooter.vue';
+  import AppFooter from './components/AppFooter.vue';
   import AppSection1 from './components/main-sections/AppSection1.vue'
 
   export default {
@@ -18,8 +18,7 @@
 
 <template>
 
-  <div class="position-relative">
-    <div>
+    <div class="header">
       <AppHeader />
     </div>
     <div>
@@ -34,7 +33,6 @@
     <div>
       <AppFooter />
     </div>
-  </div>
 
 </template>
 
@@ -50,5 +48,11 @@
   }
   .logo.vue:hover {
     filter: drop-shadow(0 0 2em #42b883aa);
+  }
+
+  .header{
+    width: calc(100% - 101px);
+    right: 0;
+    position:fixed
   }
 </style>
