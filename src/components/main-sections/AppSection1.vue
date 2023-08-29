@@ -1,10 +1,28 @@
 <script>
+    import { storeCategories } from '../../store/store.js';
+    import axios from 'axios';
+
     export default {
         name: "AppSection1",
         data() {
             return {
-
+                storeCategories,
             }
+        },
+        methods:{
+            getCategories(){
+                axios.get(this.storeCategories.urlApiCategories)
+                .then(r => {
+                    storeCategories.categories=(r.data.data)
+                    console.log(storeCategories.categories)
+                })
+                .catch(e => console.log(e))
+            }
+        },
+        mounted(){
+            console.log(this.storeCategories.urlApiCategories),
+
+            this.getCategories()
         }
     }
 </script>
@@ -17,15 +35,13 @@
                         max-width="800"
                     >
                         <v-slide-group
-                            v-model="categories"
                             class="pa-4"
                             selected-class="bg-primary"
                             multiple
                             show-arrows
                         >
                         <v-slide-group-item
-                            v-for="n in 15"
-                            :key="n"
+                           v-for="(item, index) in this.storeCategories.categories"
                             v-slot="{ isSelected, toggle, selectedClass }"
                         >
                             <v-card
@@ -46,10 +62,9 @@
                                         >
                                         </v-icon>
                                     </v-scale-transition>
-
                                     <div>
                                     </div>
-
+                                    {{item.name}}
                                 </div>
                             </v-card>
                         </v-slide-group-item>
