@@ -1,11 +1,16 @@
 <script>
-  import CategoriesCarousel from './main-sections/CategoriesCarousel.vue'
+import AppSearch from './main-sections/AppSearch.vue'
+import AppSearchBar from './main-sections/AppSearchBar.vue'
+import CategoriesCarousel from './main-sections/CategoriesCarousel.vue'
 
     export default {
         name: "AppMain",
 
         components: {
+
+            AppSearch,
             CategoriesCarousel,
+            AppSearchBar
             },
 
         data() {
@@ -16,15 +21,26 @@
 </script>
 
 <template>
-    <div class="container-fluid ps-5 ">
+    <div class="container-fluid ps-md-5 ms-md-5">
         <!-- Motto -->
-        <div class="row ms-5">
-            <div class="col ps-5 ms-5">
+        <div class="row ms-md-5 ps-md-5">
+            <div class="col ps-md-5 ms-md-5">
                 <h1>Il tuo pasto a portata di un click</h1>
-                <CategoriesCarousel />
             </div>
         </div>
+        <div class="pe-md-5 me-md-5">
+            <CategoriesCarousel />
+        </div>
+        
+        <div class="row pe-md-5 me-md-5 mt-5">
+            <AppSearchBar />
+        </div>
+        
+        <div class="row ms-md-5 ps-md-5">
+            <AppSearch />
+        </div>
     </div>
+    
 </template>
 
 <style scoped lang="scss">

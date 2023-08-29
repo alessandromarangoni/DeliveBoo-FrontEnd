@@ -1,5 +1,5 @@
 <script>
-    import { storeCategories } from '../../store/store.js';
+    import { storeCategories } from '../../stores/store.js';
     import '@mdi/font/css/materialdesignicons.css';
     import axios from 'axios';
 
@@ -21,7 +21,6 @@
             }
         },
         mounted(){
-            console.log(this.storeCategories.urlApiCategories),
 
             this.getCategories()
         }
