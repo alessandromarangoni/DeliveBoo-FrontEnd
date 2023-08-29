@@ -7,7 +7,6 @@ import CategoriesCarousel from './main-sections/CategoriesCarousel.vue'
         name: "AppMain",
 
         components: {
-
             AppSearch,
             CategoriesCarousel,
             AppSearchBar
