@@ -1,32 +1,40 @@
 <script>
+import axios from 'axios';
+import {store} from '../../stores/store'
 export default {
-        name: "AppSearchBar",
-        data() {
-            return {
-
-            }
-        }
-    }
+  data() {
+    return {
+      selectedCategory: '',
+      store,
+    };
+  },
+  methods: {
+    handleCategoryChange() {
+    console.log("Categoria selezionata:", this.selectedCategory);
+  }
+  },
+  mounted() {
+  },
+};
 </script>
 
+
 <template>
-    <div class="col d-flex justify-content-center">
-        <div class="searchBar d-flex justify-content-between">
-            <input type="text" placeholder="Cerca per tipologia">
-            <button>
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </div>
-    </div>
+  <div class="w-50 m-auto">
+    <v-autocomplete
+    v-model="selectedCategory"
+    :items="store.categories"
+    item-title="name"
+    item-value="id"
+    label="Cerca una categoria"
+    @change="handleCategoryChange()"
+  ></v-autocomplete>
+
+  </div>
 </template>
 
+
 <style>
-    .searchBar {
-        width: 50%;
-        border: 1px solid rgba(0, 0, 0, 0.452);
-        padding: 0.5rem 1rem;
-        border-radius: 30px;
-    }
     input {
         width: 100%;
     }

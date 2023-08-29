@@ -15,6 +15,10 @@
                 axios.get(this.store.urlApiCategories)
                 .then(r => {
                     store.categories=(r.data.data)
+
+                    store.categories.forEach(element => {
+                        store.CategoriesName.push(element.name)
+                    });
                     console.log(store.categories)
                 })
                 .catch(e => console.log(e))
