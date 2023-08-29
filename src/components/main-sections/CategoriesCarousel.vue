@@ -1,5 +1,6 @@
 <script>
     import { storeCategories } from '../../store/store.js';
+    import { storeCategoriesRestaurants } from '../../store/store.js';
     import '@mdi/font/css/materialdesignicons.css';
     import axios from 'axios';
 
@@ -7,7 +8,9 @@
         name: "CategoriesCarousel",
         data() {
             return {
+                CategoryId:'',
                 storeCategories,
+                storeCategoriesRestaurants,
             }
         },
         methods:{
@@ -18,6 +21,14 @@
                     console.log(storeCategories.categories)
                 })
                 .catch(e => console.log(e))
+            },
+
+            getCategoryRestaurantId(id){
+                this.CategoryId = id
+                storeCategoriesRestaurants.CategoryId  = id
+            
+                console.log(this.CategoryId)
+                console.log('allo store arriva' + '' + storeCategoriesRestaurants.CategoryId)
             }
         },
         mounted(){
@@ -48,7 +59,7 @@
                                     color=""
                                     :class="['me-5', selectedClass]"
                                     class="carousel-cards"
-                                    @click="toggle"
+                                    @click ="this.getCategoryRestaurantId(item.id)"
                                 >
                                     <div class="d-flex fill-height align-center justify-center">
                                         <v-scale-transition>
