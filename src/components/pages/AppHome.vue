@@ -17,6 +17,5 @@ import AppHeader from '../AppHeader.vue';
      <div>
         <AppHeader />
         <AppMain />
-        <AppSection1 />
      </div>
 </template>
