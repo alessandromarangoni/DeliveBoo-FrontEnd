@@ -14,8 +14,8 @@ import AppHeader from '../AppHeader.vue';
         
 </script>
 <template>
-     <div>
+    <div>
         <AppHeader />
         <AppMain />
-     </div>
+    </div>
 </template>
