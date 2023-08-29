@@ -1,6 +1,5 @@
 <script>
-    import { storeCategories } from '../../stores/store.js';
-    import { storeCategoriesRestaurants } from '../../stores/store.js';
+    import { store } from '../../stores/store.js';
     import '@mdi/font/css/materialdesignicons.css';
     import axios from 'axios';
 
@@ -8,31 +7,27 @@
         name: "CategoriesCarousel",
         data() {
             return {
-                CategoryId:'',
-                storeCategories,
-                storeCategoriesRestaurants,
+                store,
             }
         },
         methods:{
             getCategories(){
-                axios.get(this.storeCategories.urlApiCategories)
+                axios.get(this.store.urlApiCategories)
                 .then(r => {
-                    storeCategories.categories=(r.data.data)
-                    console.log(storeCategories.categories)
+                    store.categories=(r.data.data)
+                    console.log(store.categories)
                 })
                 .catch(e => console.log(e))
             },
 
-            getCategoryRestaurantId(id){
-                this.CategoryId = id
-                storeCategoriesRestaurants.CategoryId  = id
-            
-                console.log(this.CategoryId)
-                console.log('allo store arriva' + '' + storeCategoriesRestaurants.CategoryId)
-            }
+            getRestaurantByCategory(id){
+                axios.get(this.store.urlApiFilterByCategory + id).then(r => {
+                    store.restaurants=(r.data.data)
+                    console.log(store.restaurants)
+                })
+            },
         },
         mounted(){
-
             this.getCategories()
         }
     }
@@ -51,14 +46,14 @@
                             show-arrows
                         >
                             <v-slide-group-item
-                            v-for="(item, index) in this.storeCategories.categories"
+                            v-for="(item, index) in this.store.categories"
                                 v-slot="{ isSelected, toggle, selectedClass }"
                             >
                                 <v-card
                                     color=""
                                     :class="['me-5', selectedClass]"
                                     class="carousel-cards"
-                                    @click ="this.getCategoryRestaurantId(item.id)"
+                                    @click ="this.getRestaurantByCategory(item.id)"
                                 >
                                     <div class="d-flex fill-height align-center justify-center">
                                         <v-scale-transition>

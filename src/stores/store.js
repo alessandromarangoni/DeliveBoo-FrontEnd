@@ -1,20 +1,13 @@
 import {reactive} from 'vue'
 
-export const storeCategories = reactive({
+export const store = reactive({
     loading: true,
-    urlApiCategories: "http://127.0.0.1:8000/api/categories",
-    categories: []
-});
-
-export const storeRestaurant = reactive ({
-    loading: true,
-    urlApiRestaurant: "http://127.0.0.1:8000/api/restaurants",
+    // API DELLE CATEGORIES
+    urlApiCategories: "http://127.0.0.1:8000/api/categories/",
+    // API DELLA LANDING PAGE (ALL RESTAURANTS)
+    urlApiRestaurant: "http://127.0.0.1:8000/api/restaurants/",
+    // API DELLA LANDING PAGE (FILTRATI)
+    urlApiFilterByCategory: "http://127.0.0.1:8000/api/restaurants/search/",
+    categories: [],
     restaurants: []
-});
-
-export const storeCategoriesRestaurants = reactive({
-    CategoryId:'',
-    loading: true,
-    urlApiCategories: "http://127.0.0.1:8000/api/restaurants/search/1",
-    categoriesRestaurant: []
 });
