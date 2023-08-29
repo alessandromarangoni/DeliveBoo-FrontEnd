@@ -3,7 +3,7 @@
   import AppSidebar from './components/AppSidebar.vue';
   import AppMain from './components/AppMain.vue';
   import AppFooter from './components/AppFooter.vue';
-  import AppSection1 from './components/main-sections/AppSection1.vue'
+  // import AppSection1 from './components/main-sections/AppSection1.vue'
 
   export default {
     components: {
@@ -18,14 +18,15 @@
 <template>
 
     <div class="header">
-      <AppHeader />
+      <!-- <AppHeader /> -->
     </div>
     <div>
       <AppSidebar />
     </div>
-    <div>
+    <router-view></router-view>
+    <!-- <div>
       <AppMain />
-    </div>
+    </div> -->
     <div>
       <AppFooter />
     </div>
