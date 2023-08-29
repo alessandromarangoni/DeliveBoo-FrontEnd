@@ -20,7 +20,7 @@
                     <v-sheet
                         class="mx-auto"
                         elevation="8"
-                        max-width="1000"
+                        max-width="800"
                     >
                         <v-slide-group
                             v-model="categories"
@@ -54,7 +54,6 @@
                                     </v-scale-transition>
 
                                     <div>
-                                        <img src="https://i.postimg.cc/vBWk43gd/20.jpg" alt="" class="img-fluid">
                                     </div>
 
                                 </div>
