@@ -10,7 +10,6 @@
       AppHeader,
       AppSidebar,
       AppMain,
-      AppSection1,
       AppFooter
     },
   }
@@ -26,9 +25,6 @@
     </div>
     <div>
       <AppMain />
-    </div>
-    <div>
-      <AppSection1 />
     </div>
     <div>
       <AppFooter />
