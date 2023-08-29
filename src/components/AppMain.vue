@@ -1,29 +1,27 @@
 <script>
-  import AppSection1 from './main-sections/AppSection1.vue'
+  import CategoriesCarousel from './main-sections/CategoriesCarousel.vue'
 
     export default {
         name: "AppMain",
 
         components: {
-
-            AppSection1,
-
+            CategoriesCarousel,
             },
 
         data() {
             return {
-                categories:['ciao','io','voglio','mori']
             }
         }
     }
 </script>
 
 <template>
-    <div class="container-fluid ps-5 ms-5">
+    <div class="container-fluid ps-5 ">
         <!-- Motto -->
-        <div class="row ms-5 ps-5">
+        <div class="row ms-5">
             <div class="col ps-5 ms-5">
                 <h1>Il tuo pasto a portata di un click</h1>
+                <CategoriesCarousel />
             </div>
         </div>
     </div>

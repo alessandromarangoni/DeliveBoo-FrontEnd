@@ -1,6 +1,6 @@
 <script>
 import AppMain from '../AppMain.vue';
-import AppSection1 from '../main-sections/AppSection1.vue';
+import CategoriesCarousel from '../main-sections/CategoriesCarousel.vue';
 import AppHeader from '../AppHeader.vue';
 
     export default{ 
@@ -8,7 +8,7 @@ import AppHeader from '../AppHeader.vue';
         components: {
             AppHeader,
             AppMain,
-            AppSection1,
+            CategoriesCarousel,
         }
     }
         
@@ -17,6 +17,5 @@ import AppHeader from '../AppHeader.vue';
      <div>
         <AppHeader />
         <AppMain />
-        <AppSection1 />
      </div>
 </template>
