@@ -9,7 +9,9 @@ export const store = reactive({
     // API DELLA LANDING PAGE (FILTRATI)
     urlApiFilterByCategory: "http://127.0.0.1:8000/api/restaurants/search/",
     categories: [],
+    ids:[],
     restaurants: [],
+    restaurantsAll:[],
     CategoriesName: [],
 });
 

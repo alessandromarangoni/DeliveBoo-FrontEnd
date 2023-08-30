@@ -8,6 +8,7 @@
         data() {
             return {
                 store,
+                opacity:''
             }
         },
         methods:{
@@ -30,6 +31,38 @@
                     console.log(store.restaurants)
                 })
             },
+
+            getDataByCategories(){
+                if(store.ids.length > 0 ){
+                    axios.get('http://127.0.0.1:8000/api/restaurants/by-categories/', {
+                    params: {
+                        category_ids: store.ids
+                    }
+                    })
+                    .then(response => {
+                        store.restaurants = response.data.results
+                        console.log(store.restaurants);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                });
+                }else{
+                    store.restaurants = store.restaurantsAll
+                }
+            },
+            pushaId(id){
+                if(store.ids.includes(id)){
+                    const index = store.ids.indexOf(id);
+                    store.ids.splice(index, 1); // 2nd parameter means remove one item only
+                    this.opacity='opacity-carousel-card'
+                    console.log(store.ids)
+                }
+                else{
+                    store.ids.push(id)
+                    console.log(store.ids)
+                    this.opacity = 'opacity-carousel-card'
+                }
+            }
         },
         mounted(){
             this.getCategories()
@@ -44,20 +77,21 @@
                         
                     >
                         <v-slide-group
+                            v-model="store.categories"
                             class="pa-4"
                             selected-class="bg-primary"
                             multiple
                             show-arrows
                         >
-                            <v-slide-group-item
-                            v-for="(item, index) in this.store.categories"
+                        <v-slide-group-item
+                                v-for="(item, index) in this.store.categories"
                                 v-slot="{ isSelected, toggle, selectedClass }"
                             >
                                 <v-card
                                     color=""
-                                    :class="['me-5', selectedClass]"
+                                    :class="['me-5', selectedClass,]"
                                     class="carousel-cards"
-                                    @click ="this.getRestaurantByCategory(item.id)"
+                                    @click ="pushaId(item.id),  getDataByCategories()"
                                 >
                                     <div class="d-flex fill-height align-center justify-center">
                                         <v-scale-transition>
@@ -68,11 +102,8 @@
                                                 size="48"
                                                 icon="mdi-close-circle-outline"
                                             >
-                                            c
                                             </v-icon>
                                         </v-scale-transition>
-                                        <div>
-                                        </div>
                                         <span class="text-white fw-bolder fs-4 text-custom">
                                             {{item.name}}
                                         </span>
@@ -86,6 +117,10 @@
 
 <style scoped lang="scss">
 @import "/src/variables.scss";
+
+.opacity-carousel-card{
+    background-color: #ffffff!important;
+}
 
 .carousel-cards{
     background-color:$light-orange;
@@ -118,9 +153,14 @@
 }
 
 @media screen and (min-width:576px) and (max-width:768px){
+
+    .carousel-container{
+        max-width: 50% !important;
+        height: auto;
+    }
     .carousel-cards{
-        width: 150px;
-        height: 75px;
+        width: 100px;
+        height: 50px;
     }
 }
 

@@ -11,6 +11,7 @@ export default {
     mounted(){
         axios.get(this.store.urlApiRestaurant).then(r => {
             this.store.restaurants = r.data.data
+            this.store.restaurantsAll = r.data.data
         })
     }
 }
