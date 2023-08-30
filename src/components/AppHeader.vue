@@ -31,7 +31,7 @@
 
     .custom-jumbotron{
         height: 33.3vh;
-        background-image: url('https://i.postimg.cc/vTtBSSPL/slide3.png');
+        background-image: url('https://i.postimg.cc/qqsfg5DC/slideorange.png');
         background-repeat: no-repeat;
         background-size: cover;
         background-position-y: -350px;
@@ -77,8 +77,9 @@
 
 
 
-    @media screen and (min-width: 1180px) and (max-width: 1420px) {
+    @media screen and (min-width: 1200px) and (max-width: 1420px) {
         .custom-jumbotron {
+            font-size: 7rem;
             height: 55vh;
             background-position-y: -240px;;
             background-position-x: 100px;
@@ -87,6 +88,7 @@
 
     @media screen and (min-width: 1420px)  {
         .custom-jumbotron {
+            font-size: 7rem;
             height: 65vh;
             background-position-y: -465px;;
             background-position-x: 100px;
