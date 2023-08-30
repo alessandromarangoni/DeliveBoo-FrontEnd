@@ -44,9 +44,11 @@ export default {
   ></v-autocomplete>
   </div>
 
-  <div @click="getDataByCategories(), handleCategoryChange()" >
-      Bottoneooooooooooooooooooooooooooooooo
-    </div>
+   <div>
+     <button class="btn-primary" @click="getDataByCategories(), handleCategoryChange()" >
+      Bottoneo
+    </button>
+   </div>
 
 </template>
 
