@@ -17,33 +17,53 @@ export default {
 }
 </script>
 <template>
-    <div>
-        <div>
-            <section class="text-center">
-                <h2>I nostri Ristortanti</h2>
-            </section>
+    <div class="d-flex justify-content-end">
+        <div class="align-center-on-md p-sm-3">
             <section>
-                <div v-if="this.store.restaurants.length > 0" class="d-flex justify-content-evenly gap-3 flex-wrap">
-                    <div v-for="restaurant in this.store.restaurants">
-                        <div class="card" style="width: 18rem;">
-                            <img :src="restaurant.thumb" v-if="restaurant.thumb" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ restaurant.name }}</h5>
-                                <div v-if="restaurant.note == true">
-                                    <p class="card-text">{{ restaurant.note }}</p>
+                <div v-if='this.store.restaurants.length > 0'>
+                    <div class="text-center pb-5 mp-5">
+                            <h2>Risultati</h2>
+                    </div>
+                    <div class="d-flex justify-content-evenly gap-3 flex-wrap">
+                        <div v-for="restaurant in store.restaurants" :key="restaurant.id">
+                            <div class="card-custom">
+                                <img :src="'http://127.0.0.1:8000/restaurants/'+ restaurant.thumb " alt="" v-if="restaurant.thumb" class="card-img-top rounded-3">
+                                <div class="card-body pt-2">
+                                    <h5 class="card-title">{{ restaurant.name }}</h5>
+                                    <div v-if="restaurant.note">
+                                        <span class="card-text d-block">{{ restaurant.note }}</span>
+                                    </div>
                                 </div>
-                                <a href="#" class="btn btn-primary">Guarda i nostri piatti</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div v-else>
-                    ciao
+                   <div class="text-center pt-5 mt-5 w-50 m-auto">
+                            <h2>Oops! Ancora Nessun ristorante Che corrisponde a questa Ricerca</h2>
+                    </div>
                 </div>
             </section>
         </div>
     </div>
 </template>
 
-<style>
+<style lang="scss">
+    .card-custom{
+        width: 300px;
+        border-radius: 15px !important;
+        background: rgba(255, 216, 184, 0);
+        border: none;
+    }
+
+    .align-center-on-md{
+            width: calc(100% - 100px);
+        }
+
+    @media screen and (max-width: 577px){
+        .align-center-on-md{
+            width:100%;
+        }
+    }
 </style>
+

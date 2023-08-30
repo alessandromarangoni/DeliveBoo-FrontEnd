@@ -22,7 +22,7 @@ import CategoriesCarousel from './main-sections/CategoriesCarousel.vue'
 <template>
     <div class="container-fluid sidebar_spacer ">
         <!-- Motto -->
-        <div class="row p_1rem">
+        <!-- <div class="row p_1rem">
             <div class="col text-center">
                 <h1>Il tuo pasto a portata di un click</h1>
             </div>
@@ -37,7 +37,7 @@ import CategoriesCarousel from './main-sections/CategoriesCarousel.vue'
         
         <div class="p_1rem">
             <AppSearch />
-        </div>
+        </div> -->
     </div>
     
 </template>

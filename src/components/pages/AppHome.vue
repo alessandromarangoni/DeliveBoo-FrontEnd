@@ -1,5 +1,5 @@
 <script>
-import AppMain from '../AppMain.vue';
+import AppSearch from '../main-sections/AppSearch.vue';
 import JumbotronCarousel from '../main-sections/JumbotronCarousel.vue'
 import CategoriesCarousel from '../main-sections/CategoriesCarousel.vue';
 import AppHeader from '../AppHeader.vue';
@@ -9,7 +9,7 @@ import AppHeader from '../AppHeader.vue';
         components: {
             AppHeader,
             JumbotronCarousel,
-            AppMain,
+            AppSearch,
             CategoriesCarousel,
         }
     }
@@ -17,8 +17,14 @@ import AppHeader from '../AppHeader.vue';
 </script>
 <template>
     <div>
-        <JumbotronCarousel/>
         <AppHeader />
-        <AppMain />
+        <div class="">
+            <CategoriesCarousel />
+        </div>
+
+        <div class="w-75 m-auto">
+            <AppSearch />
+        </div> 
+        <!-- <JumbotronCarousel/> -->
     </div>
 </template>

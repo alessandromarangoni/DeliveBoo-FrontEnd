@@ -8,7 +8,6 @@
         data() {
             return {
                 store,
-                opacity:''
             }
         },
         methods:{
@@ -25,18 +24,11 @@
                 .catch(e => console.log(e))
             },
 
-            getRestaurantByCategory(id){
-                axios.get(this.store.urlApiFilterByCategory + id).then(r => {
-                    store.restaurants=(r.data.data)
-                    console.log(store.restaurants)
-                })
-            },
-
             getDataByCategories(){
-                if(store.ids.length > 0 ){
+                if(store.selectedCategories.length > 0 ){
                     axios.get('http://127.0.0.1:8000/api/restaurants/by-categories/', {
                     params: {
-                        category_ids: store.ids
+                        category_ids: store.selectedCategories.map(category => category.id)
                     }
                     })
                     .then(response => {
@@ -50,18 +42,18 @@
                     store.restaurants = store.restaurantsAll
                 }
             },
-            pushaId(id){
-                if(store.ids.includes(id)){
-                    const index = store.ids.indexOf(id);
-                    store.ids.splice(index, 1); // 2nd parameter means remove one item only
-                    this.opacity='opacity-carousel-card'
-                    console.log(store.ids)
+
+
+            selectCategory(item){
+                if(store.selectedCategories.includes(item)){
+                    const indexid = store.selectedCategories.indexOf(item);
+                    store.selectedCategories.splice(indexid, 1);
+                    console.log(store.selectedCategories);
                 }
                 else{
-                    store.ids.push(id)
-                    console.log(store.ids)
-                    this.opacity = 'opacity-carousel-card'
-                }
+                    store.selectedCategories.push(item)
+                    console.log(store.selectedCategories)
+                };
             }
         },
         mounted(){
@@ -71,56 +63,40 @@
 </script>
 
 <template>
-    <div class="d-flex gx-3 justify-content-center">
-                    <v-sheet
-                        class="mx-auto carousel-container w-75"
-                        
-                    >
-                        <v-slide-group
-                            v-model="store.categories"
-                            class="pa-4"
-                            selected-class="bg-primary"
-                            multiple
-                            show-arrows
-                        >
-                        <v-slide-group-item
-                                v-for="(item, index) in this.store.categories"
-                                v-slot="{ isSelected, toggle, selectedClass }"
-                            >
-                                <v-card
-                                    color=""
-                                    :class="['me-5', selectedClass,]"
-                                    class="carousel-cards"
-                                    @click ="pushaId(item.id),  getDataByCategories()"
-                                >
-                                    <div class="d-flex fill-height align-center justify-center">
-                                        <v-scale-transition>
+    <div class="d-flex gx-3 justify-content-end">
+        <div class="align-center-on-md">
+            <v-sheet class="mx-auto carousel-container w-75">
+                <v-slide-group v-model="store.categories" class="pa-4" selected-class="bg-primary" multiple show-arrows>
+                    <v-slide-group-item v-for="(item, index) in this.store.categories" :key="index" v-slot="{ isSelected, toggle, selectedClass }">
+                        <v-card color="" :class="['me-5', selectedClass]" class="carousel-cards" @click ="toggle, selectCategory(item) , getDataByCategories()">
+                            <div class="d-flex fill-height align-center justify-center">
+                                <v-scale-transition>
+                                    <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline">
+                                    </v-icon>
+                                </v-scale-transition>
+                                <div class="text-white fw-bolder fs-4 text-custom position-relative">
+                                    <!-- <img :src="'http://127.0.0.1:8000/categories/'+ item.thumb " alt="" class="w-100"> -->
+                                    <span>{{item.name}}</span>
+                                </div>
+                            </div>
+                        </v-card>
+                    </v-slide-group-item>
+                </v-slide-group>
+            </v-sheet>
+        </div>
+    </div>
 
-                                            <v-icon
-                                                v-if="isSelected"
-                                                color="white"
-                                                size="48"
-                                                icon="mdi-close-circle-outline"
-                                            >
-                                            </v-icon>
-                                        </v-scale-transition>
-                                        <span class="text-white fw-bolder fs-4 text-custom">
-                                            {{item.name}}
-                                        </span>
-                                    </div>
-                                </v-card>
-                            </v-slide-group-item>
-                        </v-slide-group>
-                    </v-sheet>
-                </div>
+    <div>
+        <div class="text-center" v-for="(item, index) in store.selectedCategories" :key="index">
+            <span class="text-black">
+                {{item.name}}
+            </span>
+        </div>
+    </div>
+
 </template>
-
 <style scoped lang="scss">
 @import "/src/variables.scss";
-
-.opacity-carousel-card{
-    background-color: #ffffff!important;
-}
 
 .carousel-cards{
     background-color:$light-orange;
@@ -163,5 +139,15 @@
         height: 50px;
     }
 }
+
+    .align-center-on-md{
+            width: calc(100% - 100px);
+        }
+
+    @media screen and (max-width: 577px){
+        .align-center-on-md{
+            width:100%;
+        }
+    }
 
 </style>
