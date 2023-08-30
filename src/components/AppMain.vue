@@ -20,22 +20,22 @@ import CategoriesCarousel from './main-sections/CategoriesCarousel.vue'
 </script>
 
 <template>
-    <div class="container-fluid ps-md-5 ms-md-5">
+    <div class="container-fluid sidebar_spacer ">
         <!-- Motto -->
-        <div class="row ms-md-5 ps-md-5">
-            <div class="col ps-md-5 ms-md-5">
+        <div class="row p_1rem">
+            <div class="col text-center">
                 <h1>Il tuo pasto a portata di un click</h1>
             </div>
         </div>
-        <div class="pe-md-5 me-md-5">
+        <div class="">
             <CategoriesCarousel />
         </div>
         
-        <div class="row pe-md-5 me-md-5 mt-5">
+        <div class="pt-5">
             <AppSearchBar />
         </div>
         
-        <div class="row ms-md-5 ps-md-5">
+        <div class="p_1rem">
             <AppSearch />
         </div>
     </div>
@@ -43,5 +43,12 @@ import CategoriesCarousel from './main-sections/CategoriesCarousel.vue'
 </template>
 
 <style scoped lang="scss">
-
+    @media screen and (min-width: 576px) {
+        .sidebar_spacer {
+            padding-left: 100px;
+        }
+    }
+    .p_1rem {
+        padding: 0 1rem;
+    }
 </style>
