@@ -1,5 +1,6 @@
 <script>
 import AppMain from '../AppMain.vue';
+import JumbotronCarousel from '../main-sections/JumbotronCarousel.vue'
 import CategoriesCarousel from '../main-sections/CategoriesCarousel.vue';
 import AppHeader from '../AppHeader.vue';
 
@@ -7,6 +8,7 @@ import AppHeader from '../AppHeader.vue';
         name:'AppHome',
         components: {
             AppHeader,
+            JumbotronCarousel,
             AppMain,
             CategoriesCarousel,
         }
@@ -15,6 +17,7 @@ import AppHeader from '../AppHeader.vue';
 </script>
 <template>
     <div>
+        <JumbotronCarousel/>
         <AppHeader />
         <AppMain />
     </div>

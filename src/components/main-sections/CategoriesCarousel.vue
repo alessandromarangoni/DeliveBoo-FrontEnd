@@ -49,8 +49,8 @@
                             multiple
                             show-arrows
                         >
-                            <v-slide-group-item
-                            v-for="(item, index) in this.store.categories"
+                        <v-slide-group-item
+                                v-for="(item, index) in this.store.categories"
                                 v-slot="{ isSelected, toggle, selectedClass }"
                             >
                                 <v-card
@@ -68,7 +68,6 @@
                                                 size="48"
                                                 icon="mdi-close-circle-outline"
                                             >
-                                            c
                                             </v-icon>
                                         </v-scale-transition>
                                         <div>
@@ -118,9 +117,14 @@
 }
 
 @media screen and (min-width:576px) and (max-width:768px){
+
+    .carousel-container{
+        max-width: 50% !important;
+        height: auto;
+    }
     .carousel-cards{
-        width: 150px;
-        height: 75px;
+        width: 100px;
+        height: 50px;
     }
 }
 
