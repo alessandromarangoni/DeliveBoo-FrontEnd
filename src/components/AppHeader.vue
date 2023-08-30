@@ -27,6 +27,8 @@
 <style scoped lang="scss">
     @import '../variables.scss';
 
+
+
     .custom-jumbotron{
         height: 33.3vh;
         background-image: url('https://i.postimg.cc/vTtBSSPL/slide3.png');
@@ -40,5 +42,54 @@
         top:10px;
         left:50%;
         transform:translateX(-50%)
+    }
+    @media screen and (max-width: 414px) {
+        .custom-jumbotron {
+            height: 18vh;
+            background-position-y: -90px;
+            background-position-x: 0px;
+        }
+    }
+
+    @media screen and (min-width: 416px) and (max-width: 575px) {
+        .custom-jumbotron {
+            height: 30vh;
+            background-position-y: -120px;
+            background-position-x: 0px;
+        }
+    }
+
+    @media screen and (min-width: 575px) and (max-width: 1180px) {
+        .custom-jumbotron {
+            height: 33vh;
+            background-position-y: -180px;
+            background-position-x: 100px;
+        }
+    }
+
+    @media screen and (min-width: 980px) and (max-width: 1200px) {
+        .custom-jumbotron {
+            height: 33vh;
+            background-position-y: -250px;
+            background-position-x: 100px;
+        }
+    }
+
+
+
+    @media screen and (min-width: 1180px) and (max-width: 1420px) {
+        .custom-jumbotron {
+            height: 55vh;
+            background-position-y: -240px;;
+            background-position-x: 100px;
+        }
+    }
+
+    @media screen and (min-width: 1420px)  {
+        .custom-jumbotron {
+            height: 65vh;
+            background-position-y: -465px;;
+            background-position-x: 100px;
+        }
     }
 </style>
