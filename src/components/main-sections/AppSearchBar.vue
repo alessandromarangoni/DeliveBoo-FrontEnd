@@ -5,7 +5,6 @@ export default {
   data() {
     return {
       selectedCategory:null,
-      categoryIds: [1 , 12],
       store,
     };
   },
@@ -15,11 +14,12 @@ export default {
     getDataByCategories(){
       axios.get('http://127.0.0.1:8000/api/restaurants/by-categories/', {
           params: {
-            category_ids: this.categoryIds
+            category_ids: this.selectedCategory
           }
         })
         .then(response => {
-          console.log(response.data);
+           store.restaurants = response.data.results
+            console.log(store.restaurants);
         })
         .catch(error => {
           console.error(error);
@@ -44,7 +44,7 @@ export default {
   ></v-autocomplete>
   </div>
 
-  <div @click="getDataByCategories()" >
+  <div @click="getDataByCategories(), handleCategoryChange()" >
       Bottoneooooooooooooooooooooooooooooooo
     </div>
 
