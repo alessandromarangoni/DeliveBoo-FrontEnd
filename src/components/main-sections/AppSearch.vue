@@ -8,18 +8,25 @@ export default {
             store,
         }
     },
-    mounted(){
-        axios.get(this.store.urlApiRestaurant).then(r => {
+    methods: {
+        getAllRestaurants(){
+            store.loading = true;
+            axios.get(this.store.urlApiRestaurant).then(r => {
             this.store.restaurants = r.data.data
             this.store.restaurantsAll = r.data.data
+            store.loading = false;
         })
+        }
+    },
+    mounted(){
+        this.getAllRestaurants()
     }
 }
 </script>
 <template>
     <div class="d-flex justify-content-end">
         <div class="align-center-on-md p-sm-3">
-            <section>
+            <section v-show="store.loading == false">
                 <div v-if='this.store.restaurants.length > 0'>
                     <div class="text-center pb-5 mp-5">
                             <h2>Risultati</h2>
