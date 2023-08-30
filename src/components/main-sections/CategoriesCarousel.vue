@@ -63,7 +63,7 @@
 </script>
 
 <template>
-    <div class="d-flex gx-3 justify-content-end">
+    <div class="d-flex gx-3 justify-content-end pt-5 mt-5">
         <div class="align-center-on-md">
             <v-sheet class="mx-auto carousel-container w-75">
                 <v-slide-group v-model="store.categories" class="pa-4" selected-class="bg-primary" multiple show-arrows>
@@ -75,8 +75,8 @@
                                     </v-icon>
                                 </v-scale-transition>
                                 <div class="text-white fw-bolder fs-4 text-custom position-relative">
-                                    <!-- <img :src="'http://127.0.0.1:8000/categories/'+ item.thumb " alt="" class="w-100"> -->
-                                    <span>{{item.name}}</span>
+                                    <img :src="'http://127.0.0.1:8000/categories/'+ item.thumb " alt="" class="w-100">
+                                    <span class="position-absolute slider-cards-title">{{item.name}}</span>
                                 </div>
                             </div>
                         </v-card>
@@ -86,17 +86,28 @@
         </div>
     </div>
 
-    <div>
-        <div class="text-center" v-for="(item, index) in store.selectedCategories" :key="index">
-            <span class="text-black">
-                {{item.name}}
-            </span>
+    <div class="text-center d-flex justify-content-center">
+        <div v-show="store.selectedCategories.length > 0" >
+            <span class="d-block pt-3 fw-bolder text-center text-black-50 pe-2">Categorie Selezionate: </span>
         </div>
+        <template v-for="(item, index) in store.selectedCategories" :key="index">
+            <span class="badge rounded-pill text-white text-bg-warning mt-4 me-2"> {{' '+ item.name}}</span>
+        </template>
     </div>
 
 </template>
 <style scoped lang="scss">
 @import "/src/variables.scss";
+
+.slider-cards-title{
+    top:50%;
+    left:50%;
+    z-index: 999;
+    -webkit-text-stroke: #000000;
+    -webkit-text-stroke-width: 1px;
+    transform: translate(-50%, -50%) ;
+    color: rgb(255, 255, 255);
+}
 
 .carousel-cards{
     background-color:$light-orange;
