@@ -17,12 +17,12 @@ export default {
 </script>
 <template>
     <div>
-        <div class="col ps-md-5 ms-md-5">
-            <section>
-                <h2>Risultati</h2>
+        <div>
+            <section class="text-center">
+                <h2>I nostri Ristortanti</h2>
             </section>
-            <section class="">
-               <div v-if="this.store.restaurants.length > 0" class="d-flex justify-content-center gap-3 flex-wrap">
+            <section>
+                <div v-if="this.store.restaurants.length > 0" class="d-flex justify-content-evenly gap-3 flex-wrap">
                     <div v-for="restaurant in this.store.restaurants">
                         <div class="card" style="width: 18rem;">
                             <img :src="restaurant.thumb" v-if="restaurant.thumb" class="card-img-top">
@@ -35,10 +35,10 @@ export default {
                             </div>
                         </div>
                     </div>
-               </div>
-               <div v-else>
+                </div>
+                <div v-else>
                     ciao
-               </div>
+                </div>
             </section>
         </div>
     </div>
