@@ -79,15 +79,16 @@ export default {
                 <v-slide-group v-model="store.categories" class="pa-4" selected-class="bg-primary" multiple show-arrows>
                     <v-slide-group-item v-for="(item, index) in this.store.categories" :key="index"
                         v-slot="{ isSelected, toggle, selectedClass }">
-                        <v-card color="" :class="['me-5', selectedClass]" class="carousel-cards"
-                            @click=" selectCategory(item)">
+                        <v-card color="" :class="[store.selectedCategories.includes(item) && 'active-category']"
+                            class="carousel-cards mx-5" @click="toggle, selectCategory(item)">
                             <div class="d-flex fill-height align-center justify-center">
                                 <v-scale-transition>
                                     <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline">
                                     </v-icon>
                                 </v-scale-transition>
                                 <div class="text-white fw-bolder fs-4 text-custom position-relative">
-                                    <img :src="'http://127.0.0.1:8000/categories/' + item.thumb" alt="" class="w-100">
+                                    <img :src="'http://127.0.0.1:8000/categories/' + item.thumb" alt=""
+                                        class="w-100 carousel-img">
                                     <span class="position-absolute slider-cards-title">{{ item.name }}</span>
                                 </div>
                             </div>
@@ -109,6 +110,15 @@ export default {
 </template>
 <style scoped lang="scss">
 @import "/src/variables.scss";
+
+.active-category {
+    border: 2px solid orange;
+    box-shadow: 0 0 2px 1px orange;
+
+    img {
+        filter: blur(1px);
+    }
+}
 
 .slider-cards-title {
     top: 50%;
