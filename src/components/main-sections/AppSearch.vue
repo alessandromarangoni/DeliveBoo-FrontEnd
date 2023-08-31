@@ -1,33 +1,23 @@
 <script>
 import {store} from '../../stores/store'
-import axios from 'axios'
+import { services } from '../../stores/services'
 
 export default {
     data(){
         return{
             store,
-            path:'AppRestaurant'
+            services
         }
     },
     methods:{
-        getAllRestaurants(){
-            axios.get(this.store.urlApiRestaurant).then(r => {
-            this.store.restaurants = r.data.data
-            this.store.restaurantsAll = r.data.data
-            store.loading = false
-            })
-        },
-        GetRestaurantdata(item){
-            store.selectedRestaurant = item
-        }
     },
     mounted(){
-        this.getAllRestaurants()
+        services.getAllRestaurants()
     }
 }
 </script>
 <template>
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-end classe-da-eliminare">
         <div class="align-center-on-md p-sm-3">
             <section>
                 <div v-if='this.store.restaurants.length > 0'>
@@ -60,7 +50,11 @@ export default {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
+
+    // .classe-da-eliminare {
+    //     height: 500vh;
+    // }
 
     .text-ellipsis{
         overflow: hidden; 
