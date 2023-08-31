@@ -27,11 +27,9 @@
 <style scoped lang="scss">
     @import '../variables.scss';
 
-
-
     .custom-jumbotron{
         height: 33.3vh;
-        background-image: url('https://i.postimg.cc/qqsfg5DC/slideorange.png');
+        background-image: url('https://i.postimg.cc/vTtBSSPL/slide3.png');
         background-repeat: no-repeat;
         background-size: cover;
         background-position-y: -350px;
