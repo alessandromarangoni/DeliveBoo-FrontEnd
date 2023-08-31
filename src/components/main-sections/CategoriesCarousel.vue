@@ -63,38 +63,41 @@
 </script>
 
 <template>
-    <div class="d-flex gx-3 justify-content-end pt-5 mt-5">
-        <div class="align-center-on-md">
-            <v-sheet class="mx-auto carousel-container w-75">
-                <v-slide-group v-model="store.categories" class="pa-4" selected-class="bg-primary" multiple show-arrows>
-                    <v-slide-group-item v-for="(item, index) in this.store.categories" :key="index" v-slot="{ isSelected, toggle, selectedClass }">
-                        <v-card color="" :class="['me-5', selectedClass]" class="carousel-cards" @click =" selectCategory(item) , getDataByCategories()">
-                            <div class="d-flex fill-height align-center justify-center">
-                                <v-scale-transition>
-                                    <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline">
-                                    </v-icon>
-                                </v-scale-transition>
-                                <div class="text-white fw-bolder fs-4 text-custom position-relative">
-                                    <img :src="'http://127.0.0.1:8000/categories/'+ item.thumb " alt="" class="w-100">
-                                    <span class="position-absolute slider-cards-title">{{item.name}}</span>
+    <section id="CategoriesCarousel">
+
+            <div class="d-flex gx-3 justify-content-end pt-5 mt-5">
+                <div class="align-center-on-md">
+                    <v-sheet class="mx-auto carousel-container w-75">
+                        <v-slide-group v-model="store.categories" class="pa-4" selected-class="bg-primary" multiple show-arrows>
+                        <v-slide-group-item v-for="(item, index) in this.store.categories" :key="index" v-slot="{ isSelected, toggle, selectedClass }">
+                            <v-card color="" :class="['me-5', selectedClass]" class="carousel-cards" @click =" selectCategory(item) , getDataByCategories()">
+                                <div class="d-flex fill-height align-center justify-center">
+                                    <v-scale-transition>
+                                        <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline">
+                                        </v-icon>
+                                    </v-scale-transition>
+                                    <div class="text-white fw-bolder fs-4 text-custom position-relative">
+                                        <img :src="'http://127.0.0.1:8000/categories/'+ item.thumb " alt="" class="w-100">
+                                        <span class="position-absolute slider-cards-title">{{item.name}}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </v-card>
-                    </v-slide-group-item>
-                </v-slide-group>
-            </v-sheet>
+                            </v-card>
+                        </v-slide-group-item>
+                    </v-slide-group>
+                </v-sheet>
+            </div>
         </div>
-    </div>
 
-    <div class="text-center d-flex justify-content-center">
-        <div v-show="store.selectedCategories.length > 0" >
-            <span class="d-block pt-3 fw-bolder text-center text-black-50 pe-2">Categorie Selezionate: </span>
+        <div class="text-center d-flex justify-content-center">
+            <div v-show="store.selectedCategories.length > 0" >
+                <span class="d-block pt-3 fw-bolder text-center text-black-50 pe-2">Categorie Selezionate: </span>
+            </div>
+            <template v-for="(item, index) in store.selectedCategories" :key="index">
+                <span class="badge rounded-pill text-white text-bg-warning mt-4 me-2"> {{' '+ item.name}}</span>
+            </template>
         </div>
-        <template v-for="(item, index) in store.selectedCategories" :key="index">
-            <span class="badge rounded-pill text-white text-bg-warning mt-4 me-2"> {{' '+ item.name}}</span>
-        </template>
-    </div>
-
+    
+    </section>
 </template>
 <style scoped lang="scss">
 @import "/src/variables.scss";
@@ -126,39 +129,46 @@
     box-shadow: inset 0px 1px 25px 5px #ffffff73;
 }
 
-@media screen and (max-width: 576px) {
-    .carousel-cards{
-        width: 100px;
-        height: 50px;
-    }
-    .carousel-container{
-        height: auto;
-    }
-    .text-custom{
-        font-size: 1rem !important;
-    }
+@media screen and (max-width: 786px) {
+   
+   #CategoriesCarousel{
+    display: none !important;
+   }
+   
+   
+   
+    // .carousel-cards{
+    //     width: 100px;
+    //     height: 50px;
+    // }
+    // .carousel-container{
+    //     height: auto;
+    // }
+    // .text-custom{
+    //     font-size: 1rem !important;
+    // }
 }
 
-@media screen and (min-width:576px) and (max-width:768px){
+// @media screen and (min-width:576px) and (max-width:768px){
 
-    .carousel-container{
-        max-width: 50% !important;
-        height: auto;
-    }
-    .carousel-cards{
-        width: 100px;
-        height: 50px;
-    }
-}
+//     .carousel-container{
+//         max-width: 50% !important;
+//         height: auto;
+//     }
+//     .carousel-cards{
+//         width: 100px;
+//         height: 50px;
+//     }
+// }
 
-    .align-center-on-md{
-            width: calc(100% - 100px);
-        }
+//     .align-center-on-md{
+//             width: calc(100% - 100px);
+//         }
 
-    @media screen and (max-width: 577px){
-        .align-center-on-md{
-            width:100%;
-        }
-    }
+//     @media screen and (max-width: 577px){
+//         .align-center-on-md{
+//             width:100%;
+//         }
+//     }
 
 </style>
