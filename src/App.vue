@@ -1,15 +1,14 @@
 <script>
   import AppHeader from './components/AppHeader.vue';
   import AppSidebar from './components/AppSidebar.vue';
-  import AppMain from './components/AppMain.vue';
   import AppFooter from './components/AppFooter.vue';
-  // import AppSection1 from './components/main-sections/AppSection1.vue'
+
 
   export default {
     components: {
       AppHeader,
       AppSidebar,
-      AppMain,
+
       AppFooter
     },
   }
@@ -24,9 +23,6 @@
       <AppSidebar />
     </div>
     <router-view></router-view>
-    <!-- <div>
-      <AppMain />
-    </div> -->
     <div>
       <AppFooter />
     </div>

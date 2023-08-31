@@ -11,10 +11,11 @@ export const store = reactive({
     categories: [],
 
     selectedCategories:[],
-
+    selectedRestaurant:null,
     restaurants: [],
     restaurantsAll:[],
     CategoriesName: [],
+    menu:[],
 });
 
 export const motto = reactive({

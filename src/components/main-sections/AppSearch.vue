@@ -6,15 +6,19 @@ export default {
     data(){
         return{
             store,
+            path:'AppRestaurant'
         }
     },
     methods:{
-            getAllRestaurants(){
-                axios.get(this.store.urlApiRestaurant).then(r => {
-                this.store.restaurants = r.data.data
-                this.store.restaurantsAll = r.data.data
-                store.loading = false
+        getAllRestaurants(){
+            axios.get(this.store.urlApiRestaurant).then(r => {
+            this.store.restaurants = r.data.data
+            this.store.restaurantsAll = r.data.data
+            store.loading = false
             })
+        },
+        GetRestaurantdata(item){
+            store.selectedRestaurant = item
         }
     },
     mounted(){
@@ -32,14 +36,16 @@ export default {
                     </div>
                     <div class="d-flex justify-content-evenly gap-3 flex-wrap">
                         <div v-for="restaurant in store.restaurants" :key="restaurant.id">
-                            <div class="card-custom">
-                                <img :src="'http://127.0.0.1:8000/restaurants/'+ restaurant.thumb " alt="" v-if="restaurant.thumb" class="card-img-top rounded-3">
-                                <div class="card-body pt-2">
-                                    <h5 class="card-title fs-4">{{ restaurant.name }}</h5>
-                                    <div v-if="restaurant.note">
-                                        <span class="card-text d-block text-ellipsis">{{ restaurant.note }}</span>
+                            <div class="card-custom" @click='GetRestaurantdata(restaurant)'>
+                                <router-link :to=" { name:this.path, params:{'id':restaurant.id} }">
+                                    <img :src="'http://127.0.0.1:8000/restaurants/'+ restaurant.thumb " alt="" v-if="restaurant.thumb" class="card-img-top rounded-3">
+                                    <div class="card-body pt-2">
+                                        <h5 class="card-title fs-4">{{ restaurant.name }}</h5>
+                                        <div v-if="restaurant.note">
+                                            <span class="card-text d-block text-ellipsis">{{ restaurant.note }}</span>
+                                        </div>
                                     </div>
-                                </div>
+                                </router-link>
                             </div>
                         </div>
                     </div>
@@ -54,7 +60,7 @@ export default {
     </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 
     .text-ellipsis{
         overflow: hidden; 
