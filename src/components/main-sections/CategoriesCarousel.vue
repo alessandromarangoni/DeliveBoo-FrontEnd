@@ -32,7 +32,7 @@
                     }
                     })
                     .then(response => {
-                        store.restaurants = response.data.results
+                        store.restaurants = response.data
                         console.log(store.restaurants);
                     })
                     .catch(error => {
@@ -68,7 +68,7 @@
             <v-sheet class="mx-auto carousel-container w-75">
                 <v-slide-group v-model="store.categories" class="pa-4" selected-class="bg-primary" multiple show-arrows>
                     <v-slide-group-item v-for="(item, index) in this.store.categories" :key="index" v-slot="{ isSelected, toggle, selectedClass }">
-                        <v-card color="" :class="['me-5', selectedClass]" class="carousel-cards" @click ="toggle, selectCategory(item) , getDataByCategories()">
+                        <v-card color="" :class="['me-5', selectedClass]" class="carousel-cards" @click =" selectCategory(item) , getDataByCategories()">
                             <div class="d-flex fill-height align-center justify-center">
                                 <v-scale-transition>
                                     <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline">

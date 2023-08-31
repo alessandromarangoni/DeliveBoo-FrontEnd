@@ -8,11 +8,17 @@ export default {
             store,
         }
     },
+    methods:{
+            getAllRestaurants(){
+                axios.get(this.store.urlApiRestaurant).then(r => {
+                this.store.restaurants = r.data.data
+                this.store.restaurantsAll = r.data.data
+                store.loading = false
+            })
+        }
+    },
     mounted(){
-        axios.get(this.store.urlApiRestaurant).then(r => {
-            this.store.restaurants = r.data.data
-            this.store.restaurantsAll = r.data.data
-        })
+        this.getAllRestaurants()
     }
 }
 </script>
@@ -38,7 +44,7 @@ export default {
                         </div>
                     </div>
                 </div>
-                <div v-else>
+                <div v-else-if="this.store.restaurants.length === 0 & !store.loading">
                    <div class="text-center pt-5 mt-5 w-50 m-auto">
                             <h2>Oops! Ancora Nessun ristorante Che corrisponde a questa Ricerca</h2>
                     </div>

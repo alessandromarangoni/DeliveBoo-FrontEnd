@@ -20,7 +20,7 @@
 
     <div class="w-100 position-relative m-0 custom-jumbotron d-flex justify-content-end align-items-center">
         <div class="w-25 pe-5 me-5 text-white fw-bolder"><h1>BOO..on Appetito</h1></div>
-        <img src="../assets/logo_deliveboo.png" alt="" class="w-25 position-absolute img-custom" >
+        <img src="../assets/logo-light.svg" alt="" class="w-25 position-absolute img-custom" >
     </div>
 </template>
 
