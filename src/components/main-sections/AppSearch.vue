@@ -1,24 +1,18 @@
 <script>
 import {store} from '../../stores/store'
-import axios from 'axios'
+import { services } from '../../stores/services'
 
 export default {
     data(){
         return{
             store,
+            services
         }
     },
     methods:{
-            getAllRestaurants(){
-                axios.get(this.store.urlApiRestaurant).then(r => {
-                this.store.restaurants = r.data.data
-                this.store.restaurantsAll = r.data.data
-                store.loading = false
-            })
-        }
     },
     mounted(){
-        this.getAllRestaurants()
+        services.getAllRestaurants()
     }
 }
 </script>

@@ -11,6 +11,7 @@ export const store = reactive({
     categories: [],
 
     selectedCategories:[],
+    selectedCategoriesIds:[],
 
     restaurants: [],
     restaurantsAll:[],
