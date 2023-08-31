@@ -56,9 +56,9 @@ export default {
 
 <style lang="scss">
 
-    .classe-da-eliminare {
-        height: 500vh;
-    }
+    // .classe-da-eliminare {
+    //     height: 500vh;
+    // }
 
     .text-ellipsis{
         overflow: hidden; 
