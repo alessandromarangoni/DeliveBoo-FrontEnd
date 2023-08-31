@@ -147,40 +147,46 @@ export default {
     box-shadow: inset 0px 1px 25px 5px #ffffff73;
 }
 
-@media screen and (max-width: 576px) {
-    .carousel-cards {
-        width: 100px;
-        height: 50px;
-    }
-
-    .carousel-container {
-        height: auto;
-    }
-
-    .text-custom {
-        font-size: 1rem !important;
-    }
+@media screen and (max-width: 786px) {
+   
+   #CategoriesCarousel{
+    display: none !important;
+   }
+   
+   
+   
+    // .carousel-cards{
+    //     width: 100px;
+    //     height: 50px;
+    // }
+    // .carousel-container{
+    //     height: auto;
+    // }
+    // .text-custom{
+    //     font-size: 1rem !important;
+    // }
 }
 
-@media screen and (min-width:576px) and (max-width:768px) {
+// @media screen and (min-width:576px) and (max-width:768px){
 
-    .carousel-container {
-        max-width: 50% !important;
-        height: auto;
-    }
+//     .carousel-container{
+//         max-width: 50% !important;
+//         height: auto;
+//     }
+//     .carousel-cards{
+//         width: 100px;
+//         height: 50px;
+//     }
+// }
 
-    .carousel-cards {
-        width: 100px;
-        height: 50px;
-    }
-}
+//     .align-center-on-md{
+//             width: calc(100% - 100px);
+//         }
 
-.align-center-on-md {
-    width: calc(100% - 100px);
-}
+//     @media screen and (max-width: 577px){
+//         .align-center-on-md{
+//             width:100%;
+//         }
+//     }
 
-@media screen and (max-width: 577px) {
-    .align-center-on-md {
-        width: 100%;
-    }
-}</style>
+</style>
