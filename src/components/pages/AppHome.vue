@@ -23,20 +23,15 @@ import AppHeader from '../AppHeader.vue';
     <div class="position-relative">
 
         <header>
-
             <AppHeader />
-            
         </header>
 
         
         <main class="paddingBottom">
-
             <div class="">
-                
                 <CategoriesCarousel />
                 
                 <AppSearchBar />
-                
             </div>
             
             <div class="w-75 m-auto">
@@ -44,14 +39,10 @@ import AppHeader from '../AppHeader.vue';
             </div> 
 
             <!-- <JumbotronCarousel/> -->
-
         </main>
         
-        
         <footer>
-        
             <AnotherFooter />
-        
         </footer>
         
     </div>
