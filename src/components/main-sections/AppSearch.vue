@@ -6,7 +6,8 @@ export default {
     data(){
         return{
             store,
-            services
+            services,
+            path:'AppRestaurant'
         }
     },
     methods:{
@@ -26,7 +27,7 @@ export default {
                     </div>
                     <div class="d-flex justify-content-evenly gap-3 flex-wrap">
                         <div v-for="restaurant in store.restaurants" :key="restaurant.id">
-                            <div class="card-custom" @click='GetRestaurantdata(restaurant)'>
+                            <div class="card-custom">
                                 <router-link :to=" { name:this.path, params:{'id':restaurant.id} }">
                                     <img :src="'http://127.0.0.1:8000/restaurants/'+ restaurant.thumb " alt="" v-if="restaurant.thumb" class="card-img-top rounded-3">
                                     <div class="card-body pt-2">
