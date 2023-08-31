@@ -33,7 +33,7 @@ export default {
 
 
 <template>
-  <section class="container-fluid d-flex justify-content-center">
+  <section class="container-fluid d-flex justify-content-center d-sm-none">
       <div id="CategoriesSearch" > 
               
           <div>
@@ -85,9 +85,4 @@ export default {
     }
   }
 
-  @media screen and (min-width: 768px) {
-      #CategoriesSearch{
-          display: none !important;
-      }
-  }
 </style>

@@ -73,7 +73,7 @@ export default {
 </script>
 
 <template>
-    <div class="d-flex gx-3 justify-content-end pt-5 mt-5">
+    <div class="d-none d-sm-flex gx-3 justify-content-end pt-5 mt-5">
         <div class="align-center-on-md">
             <v-sheet class="mx-auto carousel-container w-75">
                 <v-slide-group v-model="store.categories" class="pa-4" selected-class="bg-primary" multiple show-arrows>
