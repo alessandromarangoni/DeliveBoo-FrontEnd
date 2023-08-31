@@ -23,7 +23,7 @@ export default {
 }
 </script>
 <template>
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-end classe-da-eliminare">
         <div class="align-center-on-md p-sm-3">
             <section>
                 <div v-if='this.store.restaurants.length > 0'>
@@ -55,6 +55,10 @@ export default {
 </template>
 
 <style lang="scss">
+
+    .classe-da-eliminare {
+        height: 500vh;
+    }
 
     .text-ellipsis{
         overflow: hidden; 
