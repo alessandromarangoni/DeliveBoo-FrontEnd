@@ -3,7 +3,8 @@ import axios from "axios"
 
 export const services = {
     selectCategory(item) {
-        if (store.selectedCategories.includes(item)) {
+        const found = store.selectedCategories.find((e) => e.id == item.id)
+        if (found) {
             const indexid = store.selectedCategories.indexOf(item);
             store.selectedCategories.splice(indexid, 1);
         }
