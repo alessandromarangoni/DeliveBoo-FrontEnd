@@ -22,8 +22,8 @@ import axios from 'axios';
 <template>
     <div class="container-fluid set-bg w-75 p-0 pb-5 border rounded-5 mobile-version">
        <div v-for="(item, index) in store.menu" :key="index" >
-        <div class="d-flex flex-column align-content-center border-b px-4 py-5 border-black-50">
-            <div class="d-flex align-items-center" v-if="item.is_visible > 0">
+        <div class="m-auto d-flex flex-column align-items-center border-b px-4 py-5 border-black-50">
+            <div class="d-flex flex-column align-items-center" v-if="item.is_visible > 0">
                 <template v-if="item.thumb">
                     <img :src="item.thumb" alt="" srcset="" class=" item-image img-fluid">
                 </template>
@@ -45,8 +45,8 @@ import axios from 'axios';
        </div>
     </div>
 
-    <div class="container-fluid desktop w-75">
-        <div class="d-flex justify-content-evenly gap-3 flex-wrap">
+    <div class="container-fluid p-5 desktop w-75">
+        <div class="d-flex ms-5 ps-5 justify-content-evenly gap-3 flex-wrap">
             <div v-for="(item, index) in store.menu" :key="index">
                 <div class="card-custom p-3">
                     <template v-if="item.thumb">
@@ -135,7 +135,8 @@ import axios from 'axios';
 .desktop{
     display: none;
 }
+.mobile-version{
 
 }
-
+}
 </style>

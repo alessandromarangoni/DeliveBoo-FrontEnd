@@ -1,12 +1,14 @@
 <script>
 import AppMenu from '../main-sections/AppMenu.vue'
+import Cart from '../main-sections/Cart.vue'
 import { store } from '../../stores/store.js';
 import axios from 'axios';
 
     export default{ 
         name:'AppRestaurant',
         components: {
-            AppMenu
+            AppMenu,
+            Cart
         },
         data() {
             return {
@@ -100,21 +102,35 @@ import axios from 'axios';
                 </div>
             </div>
         </div>
-
-
-        <AppMenu />
+        <div class="d-md-flex justify-content-md-end align-items-md-center">
+            <div class="d-flex justify-content-center cart-menu-wrapper align-items-md-center w-100">
+                <AppMenu />
+                
+                <div class="cart-container position-relative me-5 p-3">
+                    <div>
+                        <Cart />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <style scoped lang="css">
-
+.cart-menu-wrapper{
+    width: calc(100% - 100px)
+}
 .glass {
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(202, 202, 202, 0.5);
 }
-
+.cart-container{
+    position: sticky!important;
+    right:0;
+    bottom:300px
+}
 .custom-container{
     width:calc(100% - 100px);
     background: #ffe6ce4f;
@@ -499,6 +515,12 @@ import axios from 'axios';
     @media screen and (min-width: 1440px) {
         .icon-restaurant-wrapper {
             width: 33% !important;
+        }
+    }
+
+    @media screen and (max-width: 1049px) {
+        .cart-container {
+            display:none
         }
     }
 
