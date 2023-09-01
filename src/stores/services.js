@@ -123,6 +123,13 @@ export const services = {
     cleanCart() {
         localStorage.removeItem("cart")
         store.cart = [];
+    },
+    sumPrice(){
+        let sum = 0
+        store.cart.forEach(element => {
+            sum += (element.price * element.quantity)
+        });
+        store.total = sum;
     }
     
 }

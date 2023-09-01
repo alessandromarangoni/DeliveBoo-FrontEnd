@@ -17,5 +17,6 @@ export const store = reactive({
     CategoriesName: [],
     menu:[],
     cart:[],
+    total:0,
 });
 

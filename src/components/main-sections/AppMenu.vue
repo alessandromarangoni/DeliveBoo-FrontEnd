@@ -13,9 +13,11 @@ export default {
         return {
             store,
             services
+
         }
     },
     methods: {
+
     }
 }
 </script>
@@ -38,9 +40,9 @@ export default {
                     <span class="text-black-50 d-block">{{item.price}} €</span>
                 </div>
                 <div class="d-flex">
-                    <div class="custom-imput minus" @click="services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
-                    <div class="custom-imput">N</div>
-                    <div class="custom-imput plus"  @click="services.addProduct(item)"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
+                    <div class="custom-imput minus" @click="services.sumPrice() ,services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
+                    <div class="custom-imput"></div>
+                    <div class="custom-imput plus"  @click="services.addProduct(item), services.sumPrice()"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
                 </div>
             </div>
         </div>
@@ -66,11 +68,11 @@ export default {
                             <span class="text-black-50 d-block pt-2 ">{{ item.price }} €</span>
                         </div>
                         <div class="d-flex align-self-end">
-                            <div class="custom-imput minus" @click="services.subProduct(item)"><i
+                            <div class="custom-imput minus" @click="services.sumPrice(), services.subProduct(item)"><i
                                     class="fa-solid fa-minus text-black-50 custom-icon"></i>
                             </div>
-                            <div class="custom-imput">N</div>
-                            <div class="custom-imput plus" @click="services.addProduct(item)"><i
+                            <div class="custom-imput"></div>
+                            <div class="custom-imput plus" @click="services.sumPrice(), services.addProduct(item)"><i
                                     class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
                         </div>
                     </div>
