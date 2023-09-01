@@ -23,7 +23,7 @@ import axios from 'axios';
                 store.selectedRestaurant = response.data.results.restaurant
                 store.menu = response.data.results.products
                 console.log(store.selectedRestaurant);
-                console.log(store.menu);
+                console.log(response.data.results.products);
             })
             .catch(error => {
             console.error(error);
@@ -52,7 +52,7 @@ import axios from 'axios';
     }     
 </script>
 <template>
-    <div class="custom-container vh-100">
+    <div class="custom-container">
 
         <div class="w-100 text-center" v-if="this.loading===false">
             <img :src="'http://127.0.0.1:8000/restaurants/'+ store.selectedRestaurant.thumb" alt="" class="w-100">
