@@ -18,10 +18,3 @@ export const store = reactive({
     menu:[],
 });
 
-export const motto = reactive({
-    "1": "Il tuo pasto a portata di un click",
-    "2": "Consegnamo felictà alla tua porta",
-    "3": "I tuoi ristoranti preferiti a portata di mano",
-    "4": "Dal divano alla porta, il resto della strada la facciamo noi",
-    "5": "Dì addio al traffico, ci pensiamo noi"
-})
