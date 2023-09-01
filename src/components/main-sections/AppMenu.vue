@@ -38,9 +38,9 @@ export default {
                     <span class="text-black-50 d-block">{{item.price}} €</span>
                 </div>
                 <div class="d-flex">
-                    <div class="custom-imput minus"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
+                    <div class="custom-imput minus" @click="services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
                     <div class="custom-imput">N</div>
-                    <div class="custom-imput plus"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
+                    <div class="custom-imput plus"  @click="services.addProduct(item)"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
                 </div>
             </div>
         </div>

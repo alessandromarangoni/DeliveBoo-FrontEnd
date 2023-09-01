@@ -16,5 +16,6 @@ export const store = reactive({
     restaurantsAll:[],
     CategoriesName: [],
     menu:[],
+    cart:[],
 });
 

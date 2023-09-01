@@ -95,6 +95,7 @@ export const services = {
             }
             cart.push(newItem);
         }
+        store.cart = cart
         localStorage.setItem('cart', JSON.stringify(cart));
     },
     subProduct(item) {
@@ -113,13 +114,15 @@ export const services = {
             }
         }
         if (cart.length == 0) {
-            localStorage.removeItem('cart')
+            this.cleanCart()
         } else {
             localStorage.setItem('cart', JSON.stringify(cart));
+            store.cart = cart
         }
     },
     cleanCart() {
         localStorage.removeItem("cart")
+        store.cart = [];
     }
     
 }
