@@ -1,40 +1,41 @@
 <script>
 import AppMenu from '../main-sections/AppMenu.vue'
+import Cart from '../main-sections/Cart.vue'
 import { store } from '../../stores/store.js';
 import axios from 'axios';
 
-export default {
-  name: 'AppRestaurant',
-  components: {
-    AppMenu
-  },
-  data() {
-    return {
-      store,
-      loading: true,
-      initialsString: ''
-    }
-  },
-  methods: {
-    // CHIAMATA AXIOS PER RICAVARE I MENU E RISTORANTI
-    getMenu() {
-      axios.get('http://127.0.0.1:8000/api/menu/' + this.$route.params.id)
-        .then(response => {
-          this.loading = false,
-            store.selectedRestaurant = response.data.results.restaurant
-          store.menu = response.data.results.products
-          console.log(store.selectedRestaurant);
-          console.log(response.data.results.products);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    },
-    // LOGO RISTORANTE
-    initials(string) {
-      const words = string.split(' ');
-      return this.initialsString = words.map(word => word[0]).join('');
-    }
+    export default{ 
+        name:'AppRestaurant',
+        components: {
+            AppMenu,
+            Cart
+        },
+        data() {
+            return {
+                store,
+                loading:true,
+                initialsString:''
+            }
+        },
+        methods: {
+            getMenu(){
+                axios.get('http://127.0.0.1:8000/api/menu/' + this.$route.params.id)
+            .then(response => {
+                this.loading=false,
+                store.selectedRestaurant = response.data.results.restaurant
+                store.menu = response.data.results.products
+                console.log(store.selectedRestaurant);
+                console.log(response.data.results.products);
+            })
+            .catch(error => {
+            console.error(error);
+            });
+            },
+
+            initials(string) {
+                const words = string.split(' ');
+                return this.initialsString = words.map(word => word[0]).join('');
+            }
 
   },
   // MOUNTED PER CAMBIO ROTTA
@@ -57,71 +58,84 @@ export default {
 <template>
   <div class="custom-container">
 
-    <div class="w-100 text-center" v-if="this.loading === false">
-      <img :src="'http://127.0.0.1:8000/restaurants/' + store.selectedRestaurant.thumb" alt="" class="w-100">
-      <div
-        class="d-flex flex-column align-items-center justify-content-between card glass w-50 m-auto icon-restaurant-wrapper ">
-        <div class="wrapper noselect icon-restaurant">
-          <div class="canvas">
-            <div class="tracker tr-1"></div>
-            <div class="tracker tr-2"></div>
-            <div class="tracker tr-3"></div>
-            <div class="tracker tr-4"></div>
-            <div class="tracker tr-5"></div>
-            <div class="tracker tr-6"></div>
-            <div class="tracker tr-7"></div>
-            <div class="tracker tr-8"></div>
-            <div class="tracker tr-9"></div>
-            <div class="tracker tr-10"></div>
-            <div class="tracker tr-11"></div>
-            <div class="tracker tr-12"></div>
-            <div class="tracker tr-13"></div>
-            <div class="tracker tr-14"></div>
-            <div class="tracker tr-15"></div>
-            <div class="tracker tr-16"></div>
-            <div class="tracker tr-17"></div>
-            <div class="tracker tr-18"></div>
-            <div class="tracker tr-19"></div>
-            <div class="tracker tr-20"></div>
-            <div class="tracker tr-21"></div>
-            <div class="tracker tr-22"></div>
-            <div class="tracker tr-23"></div>
-            <div class="tracker tr-24"></div>
-            <div class="tracker tr-25"></div>
-            <div id="card">
-              <div class="title">{{ this.initialsString }}</div>
+        <div class="w-100 text-center" v-if="this.loading===false">
+            <img :src="'http://127.0.0.1:8000/restaurants/'+ store.selectedRestaurant.thumb" alt="" class="w-100">
+            <div class="d-flex flex-column align-items-center justify-content-between card glass w-50 m-auto icon-restaurant-wrapper ">
+                <div class="wrapper noselect icon-restaurant">
+                    <div class="canvas">
+                        <div class="tracker tr-1"></div>
+                        <div class="tracker tr-2"></div>
+                        <div class="tracker tr-3"></div>
+                        <div class="tracker tr-4"></div>
+                        <div class="tracker tr-5"></div>
+                        <div class="tracker tr-6"></div>
+                        <div class="tracker tr-7"></div>
+                        <div class="tracker tr-8"></div>
+                        <div class="tracker tr-9"></div>
+                        <div class="tracker tr-10"></div>
+                        <div class="tracker tr-11"></div>
+                        <div class="tracker tr-12"></div>
+                        <div class="tracker tr-13"></div>
+                        <div class="tracker tr-14"></div>
+                        <div class="tracker tr-15"></div>
+                        <div class="tracker tr-16"></div>
+                        <div class="tracker tr-17"></div>
+                        <div class="tracker tr-18"></div>
+                        <div class="tracker tr-19"></div>
+                        <div class="tracker tr-20"></div>
+                        <div class="tracker tr-21"></div>
+                        <div class="tracker tr-22"></div>
+                        <div class="tracker tr-23"></div>
+                        <div class="tracker tr-24"></div>
+                        <div class="tracker tr-25"></div>
+                        <div id="card">
+                        <div class="title">{{this.initialsString}}</div>
+                        </div>
+                    </div>
+                </div>
+                <h1 class=" fix-margin-from-prev-element py-lg-2">
+                        {{store.selectedRestaurant.name}}
+                </h1>
+                <span class="pt-1 pb-lg-2">
+                    {{store.selectedRestaurant.street_name}} {{store.selectedRestaurant.street_number}}, {{store.selectedRestaurant.zip_code}}
+                </span>
+                <div class="w-100 border-top text-black-50 border-1 mt-2 py-2 px-4 py-lg-2">
+                    note: {{store.selectedRestaurant.note}}
+                </div>
             </div>
-          </div>
         </div>
-        <h1 class=" fix-margin-from-prev-element py-lg-2">
-          {{ store.selectedRestaurant.name }}
-        </h1>
-        <span class="pt-1 pb-lg-2">
-          {{ store.selectedRestaurant.street_name }} {{ store.selectedRestaurant.street_number }},
-          {{ store.selectedRestaurant.zip_code }}
-        </span>
-        <div class="w-100 border-top text-black-50 border-1 mt-2 py-2 px-4 py-lg-2">
-          note: {{ store.selectedRestaurant.note }}
+        <div class="d-md-flex justify-content-md-end align-items-md-center">
+            <div class="d-flex justify-content-center cart-menu-wrapper align-items-md-center w-100">
+                <AppMenu />
+                
+                <div class="cart-container position-relative me-5 p-3">
+                    <div>
+                        <Cart />
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-
-
-    <AppMenu />
-  </div>
 </template>
 
 <style scoped lang="css">
+.cart-menu-wrapper{
+    width: calc(100% - 100px)
+}
 .glass {
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(202, 202, 202, 0.5);
 }
-
-.custom-container {
-  width: calc(100% - 100px);
-  background: #ffe6ce4f;
+.cart-container{
+    position: sticky!important;
+    right:0;
+    bottom:300px
+}
+.custom-container{
+    width:calc(100% - 100px);
+    background: #ffe6ce4f;
 }
 
 .icon-restaurant {
@@ -506,6 +520,12 @@ export default {
     width: 33% !important;
   }
 }
+
+    @media screen and (max-width: 1049px) {
+        .cart-container {
+            display:none
+        }
+    }
 
 
 .noselect {

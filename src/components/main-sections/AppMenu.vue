@@ -23,39 +23,32 @@ export default {
 <template>
     <!-- MOBILE VERSION -->
     <div class="container-fluid set-bg w-75 p-0 pb-5 border rounded-5 mobile-version">
-        <div v-for="(item, index) in store.menu" :key="index">
-            <!-- CARD PRODUCT -->
-            <div class="d-flex flex-column align-content-center border-b px-4 py-5 border-black-50">
-                <div class="d-flex align-items-center" v-if="item.is_visible > 0">
-                    <template v-if="item.thumb">
-                        <img :src="item.thumb" alt="" srcset="" class=" item-image img-fluid">
-                    </template>
-                    <template v-else>
-                        <img class="item-image img-fluid"
-                            src="https://img.freepik.com/free-photo/delicious-cartoon-style-fast-food_23-2150287594.jpg?w=1380&t=st=1693509180~exp=1693509780~hmac=3a372721d6b4a948d3eb9f0329a7f3766fda121437ec298de441a03317c055a0"
-                            alt="" srcset="">
-                    </template>
-                    <div class="ms-5">
-                        <h4>{{ item.name }}</h4>
-                        <span class="text-black-50 d-block pe-3">{{ item.description }}</span>
-                        <span class="text-black-50 d-block">{{ item.price }} €</span>
-                    </div>
-                    <div class="d-flex">
-                        <div class="custom-imput minus"><i class="fa-solid fa-minus text-black-50 custom-icon"
-                                @click="services.subProduct(item)"></i></div>
-                        <div class="custom-imput">N</div>
-                        <div class="custom-imput plus" @click="services.addProduct(item)"><i
-                                class="fa-solid fa-plus text-black-50 custom-icon"></i>
-                        </div>
-                    </div>
+       <div v-for="(item, index) in store.menu" :key="index" >
+        <div class="m-auto d-flex flex-column align-items-center border-b px-4 py-5 border-black-50">
+            <div class="d-flex flex-column align-items-center" v-if="item.is_visible > 0">
+                <template v-if="item.thumb">
+                    <img :src="item.thumb" alt="" srcset="" class=" item-image img-fluid">
+                </template>
+                <template v-else>
+                    <img class="item-image img-fluid" src="https://img.freepik.com/free-photo/delicious-cartoon-style-fast-food_23-2150287594.jpg?w=1380&t=st=1693509180~exp=1693509780~hmac=3a372721d6b4a948d3eb9f0329a7f3766fda121437ec298de441a03317c055a0" alt="" srcset="">
+                </template>
+                <div class="ms-5">
+                    <h4>{{item.name}}</h4>
+                    <span class="text-black-50 d-block pe-3">{{item.description}}</span>
+                    <span class="text-black-50 d-block">{{item.price}} €</span>
+                </div>
+                <div class="d-flex">
+                    <div class="custom-imput minus"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
+                    <div class="custom-imput">N</div>
+                    <div class="custom-imput plus"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
                 </div>
             </div>
         </div>
+       </div>
     </div>
-    <!-- DESKTOP VERSION -->
-    <div class="container-fluid desktop w-75">
-        <button @click="services.cleanCart">SVUOTA CARRELLO</button>
-        <div class="d-flex justify-content-evenly gap-3 flex-wrap">
+
+    <div class="container-fluid p-5 desktop w-75">
+        <div class="d-flex ms-5 ps-5 justify-content-evenly gap-3 flex-wrap">
             <div v-for="(item, index) in store.menu" :key="index">
                 <div class="card-custom p-3">
                     <template v-if="item.thumb">
@@ -145,9 +138,11 @@ export default {
 
 @media screen and (max-width: 577px) {
 
-    .desktop {
-        display: none;
-    }
+.desktop{
+    display: none;
+}
+.mobile-version{
 
+}
 }
 </style>
