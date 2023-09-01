@@ -43,7 +43,7 @@ export default {
                     </div>
                 </div>
                 <div v-else-if="this.store.restaurants.length === 0 & !store.loading">
-                   <div class="text-center pt-5 mt-5 w-50 m-auto">
+                   <div class="text-center pt-5 mt-5 w-50 m-auto set-height">
                             <h2>Oops! Ancora Nessun ristorante Che corrisponde a questa Ricerca</h2>
                     </div>
                 </div>
@@ -54,9 +54,9 @@ export default {
 
 <style lang="scss">
 
-    // .classe-da-eliminare {
-    //     height: 500vh;
-    // }
+    .set-height{
+        height: 50vh;
+    }
 
     .text-ellipsis{
         overflow: hidden; 
