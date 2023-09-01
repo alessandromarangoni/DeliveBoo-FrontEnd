@@ -75,5 +75,50 @@ export const services = {
             console.log('tutti i ristoranti', store.restaurantsAll);
             console.log('store.restaurants', store.restaurants);
         }
+    },
+    // CART FUNCTION (ADD,SUB)
+    addProduct(item) {
+        // CREAZIONE CARRELLO VUOTO SE NON ESISTE
+        if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', JSON.stringify([]));
+        }
+        const cart = JSON.parse(localStorage.getItem('cart'));
+        // VERIFICA SE L'ITEM è GIA' PRESENTE NEL CARRELLO E NE AGGIUNGE LA QUANTITA'
+        const existItem = cart.find((e) => e.id === item.id);
+        if (existItem) {
+            existItem.quantity++
+        } else {
+            const newItem = {
+                ...item,
+                "quantity": 1
+            }
+            cart.push(newItem);
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+    },
+    subProduct(item) {
+        const cart = JSON.parse(localStorage.getItem('cart'));
+        if (!cart) {
+            return
+        }
+        const existItem = cart.find((e) => e.id === item.id);
+        if (existItem) {
+            if (existItem.quantity <= 1) {
+                const index = cart.indexOf(existItem);
+                cart.splice(index, 1);
+                console.log(cart);
+            } else {
+                existItem.quantity--
+            }
+        }
+        if (cart.length == 0) {
+            localStorage.removeItem('cart')
+        } else {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    },
+    cleanCart() {
+        localStorage.removeItem("cart")
     }
+    
 }
