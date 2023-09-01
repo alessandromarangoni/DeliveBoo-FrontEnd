@@ -16,7 +16,7 @@ export default {
 
 
 <template>
-  <section class="container-fluid d-flex justify-content-center d-sm-none pb-10">
+  <section class="container-fluid d-flex justify-content-center d-sm-none pb-10 pt-6">
     <div id="CategoriesSearch">
 
       <div class="d-flex flex-column">

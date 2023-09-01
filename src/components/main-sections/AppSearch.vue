@@ -2,6 +2,7 @@
 import {store} from '../../stores/store'
 import { services } from '../../stores/services'
 
+
 export default {
     data(){
         return{
@@ -28,7 +29,7 @@ export default {
                     <div class="d-flex justify-content-evenly gap-3 flex-wrap">
                         <div v-for="restaurant in store.restaurants" :key="restaurant.id">
                             <div class="card-custom">
-                                <router-link :to=" { name:this.path, params:{'id':restaurant.id} }">
+                                <router-link class="text-decoration-none text-black" :to=" { name:this.path, params:{'id':restaurant.id} }">
                                     <img :src="'http://127.0.0.1:8000/restaurants/'+ restaurant.thumb " alt="" v-if="restaurant.thumb" class="card-img-top rounded-3">
                                     <div class="card-body pt-2">
                                         <h5 class="card-title fs-4">{{ restaurant.name }}</h5>
