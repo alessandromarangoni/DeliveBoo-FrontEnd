@@ -29,9 +29,12 @@ import axios from 'axios';
                 console.log(store.selectedRestaurant);
                 console.log(response.data.results.products);
             })
-            .catch(error => {
-            console.error(error);
-            });
+            .catch((error) => {
+                    this.loading = false;
+                    this.loadingError = error.message;
+
+                    this.$router.push({ name: "error", params: { code: '404' } })
+                });
             },
 
             initials(string) {
