@@ -14,7 +14,9 @@ export default {
     methods:{
     },
     mounted(){
-        services.getAllRestaurants()
+        if (store.selectedCategories.length < 1) {
+            services.getAllRestaurants()
+        }
     }
 }
 </script>
