@@ -1,6 +1,7 @@
 <script>
 import AppMenu from '../main-sections/AppMenu.vue'
 import Cart from '../main-sections/Cart.vue'
+import OffCanvas from '../main-sections/OffCanvas.vue'
 import { store } from '../../stores/store.js';
 import axios from 'axios';
 
@@ -8,7 +9,8 @@ import axios from 'axios';
         name:'AppRestaurant',
         components: {
             AppMenu,
-            Cart
+            Cart,
+            OffCanvas,
         },
         data() {
             return {
@@ -57,9 +59,9 @@ import axios from 'axios';
 </script>
 <template>
   <div class="custom-container">
-
+        <OffCanvas/>
         <div class="w-100 text-center" v-if="this.loading===false">
-            <img :src="'http://127.0.0.1:8000/restaurants/'+ store.selectedRestaurant.thumb" alt="" class="w-100">
+            <img :src="'http://127.0.0.1:8000/storage/'+ store.selectedRestaurant.thumb" alt="" class="w-100">
             <div class="d-flex flex-column align-items-center justify-content-between card glass w-50 m-auto icon-restaurant-wrapper ">
                 <div class="wrapper noselect icon-restaurant">
                     <div class="canvas">

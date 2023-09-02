@@ -1,38 +1,36 @@
 <script>
 import { store } from '../../stores/store.js';
 import { services } from '../../stores/services';
-    export default {
-        name: "Cart",
-        data() {
-            return {
-                services,
-                store,
-            }
-        },
-        methods: {
 
-        },
-        created() {
-            let localeStorageCart = localStorage.getItem('cart')
-            if (localeStorageCart) {
-                localeStorageCart = JSON.parse(localeStorageCart); 
-                store.cart = localeStorageCart;
-            } else {
-                store.cart = [];
-            }
-        },
+export default {
+
+    name: "OffCanvas",
+
+    components: {
+    },
+
+    data() {
+        return {
+            store,
+            services
+
+        }
+    },
+    methods: {
 
     }
+}
 </script>
-<!-- //  al refresh della pagina il carrello risulta vuoto -->
+
 <template>
-    <div class="card-custom-menu position-relative p-4">
-        <div class="p-1 set-height" id="style-7">
-            <div>
-                <h3 class="pt-3 pb-4 me-5">Carrello</h3>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBotto">Toggle bottom offcanvas</button>
+        <div class="offcanvas offcanvas-bottom off-canvas-custom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <!-- div per v-for -->
-            <div v-for="item in store.cart" class="w-100 text-start d-flex justify-content-between">
+            <div class="offcanvas-body">
+                <div v-for="item in store.cart" class="w-100 text-start d-flex justify-content-between">
                 <div class="ps-2 ps-xl-5">
                     <h6 class="pt-2 ">{{item.name}}</h6>
                     <span class="text-black-50">{{item.price}} $</span>
@@ -53,12 +51,16 @@ import { services } from '../../stores/services';
                     </div>
                 </div>
             </div>
+            </div>
         </div>
-    </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 
+.off-canvas-custom{
+    min-height: 50vh!important;
+
+}
 #style-7::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -168,4 +170,5 @@ import { services } from '../../stores/services';
 .cssbuttons-io-button:hover .icon svg {
   transform: translateX(0.1em);
 }
+
 </style>
