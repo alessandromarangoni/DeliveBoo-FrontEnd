@@ -75,18 +75,13 @@ import { services } from '../../stores/services';
 #style-7::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	background-image: -webkit-gradient(linear,
-									   left bottom,
-									   left top,
-									   color-stop(0.44, rgb(122,153,217)),
-									   color-stop(0.72, rgb(73,125,189)),
-									   color-stop(0.86, rgb(28,58,148)));
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(122,153,217)), color-stop(0.72, rgb(73,125,189)), color-stop(0.86, rgb(28,58,148)));
 }
 
 
 .set-height{
-      height: 350px;
-      overflow-y:scroll ;
+    height: 350px;
+    overflow-y:scroll ;
 }
 
 .card-custom-menu {
