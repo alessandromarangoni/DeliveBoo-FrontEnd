@@ -16,6 +16,7 @@ import { services } from '../../stores/services';
             let localeStorageCart = localStorage.getItem('cart')
             if (localeStorageCart) {
                 localeStorageCart = JSON.parse(localeStorageCart); 
+                store.cart = localeStorageCart;
             } else {
                 store.cart = [];
             }
