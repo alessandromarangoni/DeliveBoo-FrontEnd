@@ -1,10 +1,14 @@
 <script>
+import OffCanvas from './main-sections/OffCanvas.vue'
+
     export default {
         name: "AppSidebar",
+        components:{
+             OffCanvas,
+        },
         data() {
             return{
             path:'home'
-                
             }
         }
     }
@@ -23,7 +27,7 @@
                     <i class="fa-regular fa-user fs-3 custom-icon"></i>
                 </div>
                 <div id="cart" class="d-flex justify-content-center align-items-center">
-                    <i class="fa-solid fa-cart-shopping fs-3 custom-icon"></i>
+                    <OffCanvas />
                 </div>
                 <div id="search" class="d-flex justify-content-center align-items-center">
                     <i class="fa-solid fa-magnifying-glass fs-3 custom-icon"></i>
@@ -46,7 +50,7 @@
         display:flex;
         left: 0;
         width: 100px;
-
+        z-index: 99;
         // background:$light-orange;
         // -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.199); 
         // box-shadow: 2px 5px 15px 5px rgba(0, 0, 0, 0.219);
