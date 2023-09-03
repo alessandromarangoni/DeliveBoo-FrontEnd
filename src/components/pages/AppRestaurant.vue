@@ -61,7 +61,7 @@ import axios from 'axios';
 <template>
   <div class="custom-container">
         <div class="w-100 text-center" v-if="this.loading===false">
-            <img :src="'http://127.0.0.1:8000/storage/'+ store.selectedRestaurant.thumb" alt="" class="w-100">
+            <img :src="'http://127.0.0.1:8000/storage/'+ store.selectedRestaurant.thumb" alt="" class="w-100 custom-image">
             <div class="d-flex flex-column align-items-center justify-content-between card glass w-50 m-auto icon-restaurant-wrapper ">
                 <div class="wrapper noselect icon-restaurant">
                     <div class="canvas">
@@ -159,6 +159,11 @@ import axios from 'axios';
   width: 150px;
   height: 150px;
   transition: 200ms;
+}
+
+.custom-image{
+  height:350px;
+  object-fit: cover;
 }
 
 .wrapper:active {

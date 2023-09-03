@@ -32,11 +32,11 @@ export default {
                         <div v-for="restaurant in store.restaurants" :key="restaurant.id">
                             <div class="card-custom">
                                 <router-link class="text-decoration-none text-black" :to=" { name:this.path, params:{'id':restaurant.id} }">
-                                    <img :src="'http://127.0.0.1:8000/storage/'+ restaurant.thumb " alt="" v-if="restaurant.thumb" class="card-img-top rounded-3">
+                                    <img :src="'http://127.0.0.1:8000/storage/'+ restaurant.thumb " alt="" v-if="restaurant.thumb" class="card-img-top custom-image rounded-3">
                                     <div class="card-body pt-2">
                                         <h5 class="card-title fs-4">{{ restaurant.name }}</h5>
                                         <div v-if="restaurant.note">
-                                            <span class="card-text d-block text-ellipsis">{{ restaurant.note }}</span>
+                                            <span class="card-text d-block text-custom-color text-ellipsis">{{ restaurant.note }}</span>
                                         </div>
                                     </div>
                                 </router-link>
@@ -56,6 +56,10 @@ export default {
 
 <style lang="scss">
 
+    .text-custom-color{
+        color: rgba(0, 0, 0, 0.815);
+    }
+
     .set-height{
         height: 50vh;
     }
@@ -70,6 +74,11 @@ export default {
         border-radius: 15px !important;
         background: rgba(255, 216, 184, 0);
         border: none;
+    }
+
+    .custom-image{
+        height: 100px;
+        object-fit: cover;
     }
 
     .align-center-on-md{
