@@ -19,22 +19,26 @@ export default {
   <section class="container-fluid d-flex justify-content-center d-sm-none pb-10 pt-6">
     <div id="CategoriesSearch">
 
-      <div class="d-flex flex-column">
+      <div class="d-flex flex-column align-items-center">
         <v-autocomplete 
         v-model="store.selectedCategories" 
         :items="store.categories" 
         item-title="name" 
         item-value="combinedValue"
-        label="Cerca una categoria" 
+        placeholder="Cerca una o più categorie"
         multiple 
         return-object
         chips 
-        variant="solo-filled">
-      </v-autocomplete>
-      <v-btn 
-      @click="services.getDataByCategories()">
-        Cerca
-      </v-btn>
+        rounded
+        theme="light"
+        variant="solo"
+        class="w-100"
+        
+        >
+        </v-autocomplete>
+        <v-btn class="custom-button" @click="services.getDataByCategories()">
+          Cerca
+        </v-btn>
       </div>
 
     </div>
@@ -44,6 +48,10 @@ export default {
 <style>
 input {
   width: 100%;
+}
+
+.custom-button{
+  border-radius:20px;
 }
 
 input:focus {
