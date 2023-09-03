@@ -38,9 +38,9 @@ import { services } from '../../stores/services';
                     <span class="text-black-50">{{item.price}} $</span>
                 </div>
                 <div class="d-flex align-items-center pe-3 ps-2 ps-xl-5">
-                    <div class="custom-imput minus" @click="services.sumPrice(),services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
+                    <div class="custom-imput minus" @click="services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
                     <div class="custom-imput">{{item.quantity}}</div>
-                    <div class="custom-imput plus" @click="services.sumPrice(),services.addProduct(item)"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
+                    <div class="custom-imput plus" @click="services.addProduct(item)"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
                 </div>
                 <div class="totale-checkout">
                     <div class="d-flex align-items-center justify-content-around">
@@ -93,6 +93,7 @@ import { services } from '../../stores/services';
 
 
 .totale-checkout{
+  background-color: #F5F5F5;  
   height: 70px;
   border-top: 1px solid rgba(0, 0, 0, 0.24);
   position: absolute; /* Imposta il posizionamento assoluto */
@@ -168,4 +169,10 @@ import { services } from '../../stores/services';
 .cssbuttons-io-button:hover .icon svg {
   transform: translateX(0.1em);
 }
+
+@media screen and (min-width: 1100px) {
+        .card-custom-menu {
+            width: 350px;
+        }
+    }
 </style>

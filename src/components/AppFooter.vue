@@ -1,6 +1,13 @@
 <script>
+import OffCanvas from './main-sections/OffCanvas.vue'
+
     export default {
         name: "AppFooter",
+
+        components:{
+            OffCanvas,
+        },
+
         data() {
             return {
             path:'home'
@@ -23,7 +30,7 @@
                     <i class="fa-regular fa-user fs-3 custom-icon"></i>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
-                    <i class="fa-solid fa-cart-shopping fs-3 custom-icon"></i>
+                    <OffCanvas />
                 </div>
                     <div class="d-flex justify-content-center align-items-center">
                         <i class="fa-solid fa-magnifying-glass fs-3 custom-icon"></i>

@@ -97,6 +97,8 @@ export const services = {
         }
         store.cart = cart
         localStorage.setItem('cart', JSON.stringify(cart));
+
+        this.sumPrice();
     },
     subProduct(item) {
         const cart = JSON.parse(localStorage.getItem('cart'));
@@ -119,6 +121,8 @@ export const services = {
             localStorage.setItem('cart', JSON.stringify(cart));
             store.cart = cart
         }
+        
+        this.sumPrice();
     },
     cleanCart() {
         localStorage.removeItem("cart")

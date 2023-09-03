@@ -1,7 +1,6 @@
 <script>
 import AppMenu from '../main-sections/AppMenu.vue'
 import Cart from '../main-sections/Cart.vue'
-import OffCanvas from '../main-sections/OffCanvas.vue'
 import { store } from '../../stores/store.js';
 import axios from 'axios';
 
@@ -10,7 +9,6 @@ import axios from 'axios';
         components: {
             AppMenu,
             Cart,
-            OffCanvas,
         },
         data() {
             return {
@@ -59,7 +57,6 @@ import axios from 'axios';
 </script>
 <template>
   <div class="custom-container">
-        <OffCanvas/>
         <div class="w-100 text-center" v-if="this.loading===false">
             <img :src="'http://127.0.0.1:8000/storage/'+ store.selectedRestaurant.thumb" alt="" class="w-100">
             <div class="d-flex flex-column align-items-center justify-content-between card glass w-50 m-auto icon-restaurant-wrapper ">
@@ -125,10 +122,10 @@ import axios from 'axios';
     width: calc(100% - 100px)
 }
 .glass {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.836);
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(202, 202, 202, 0.5);
+  box-shadow: 0 0 20px rgba(212, 129, 129, 0.37);
 }
 .cart-container{
     position: sticky!important;
@@ -137,7 +134,7 @@ import axios from 'axios';
 }
 .custom-container{
     width:calc(100% - 100px);
-    background: #ffe6ce4f;
+    background: #fce5dd4f;
 }
 
 .icon-restaurant {
@@ -175,7 +172,7 @@ import axios from 'axios';
   align-items: center;
   border-radius: 50px;
   transition: 700ms;
-  background: rgb(204, 164, 255);
+  background: #F96A5F;
 }
 
 .title {

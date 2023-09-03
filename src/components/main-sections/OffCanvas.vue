@@ -6,9 +6,6 @@ export default {
 
     name: "OffCanvas",
 
-    components: {
-    },
-
     data() {
         return {
             store,
@@ -18,27 +15,36 @@ export default {
     },
     methods: {
 
-    }
+    },
+    created() {
+            let localeStorageCart = localStorage.getItem('cart')
+            if (localeStorageCart) {
+                localeStorageCart = JSON.parse(localeStorageCart); 
+                store.cart = localeStorageCart;
+            } else {
+                store.cart = [];
+            }
+        }
 }
 </script>
 
 <template>
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBotto">Toggle bottom offcanvas</button>
+    <button class="btn btn-custom" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBotto"><i class="fa-solid fa-cart-shopping fs-3 custom-icon"></i></button>
         <div class="offcanvas offcanvas-bottom off-canvas-custom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
+            <div class="offcanvas-body pb-10 mb-10">
                 <div v-for="item in store.cart" class="w-100 text-start d-flex justify-content-between">
                 <div class="ps-2 ps-xl-5">
                     <h6 class="pt-2 ">{{item.name}}</h6>
                     <span class="text-black-50">{{item.price}} $</span>
                 </div>
-                <div class="d-flex align-items-center pe-3 ps-2 ps-xl-5">
-                    <div class="custom-imput minus" @click="services.sumPrice(),services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
+                <div class="d-flex align-items-center pb-5 mb-5 pe-3 ps-2 ps-xl-5">
+                    <div class="custom-imput minus" @click="services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
                     <div class="custom-imput">{{item.quantity}}</div>
-                    <div class="custom-imput plus" @click="services.sumPrice(),services.addProduct(item)"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
+                    <div class="custom-imput plus" @click="services.addProduct(item)"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
                 </div>
                 <div class="totale-checkout">
                     <div class="d-flex align-items-center justify-content-around">
@@ -59,7 +65,6 @@ export default {
 
 .off-canvas-custom{
     min-height: 50vh!important;
-
 }
 #style-7::-webkit-scrollbar-track
 {
@@ -95,6 +100,7 @@ export default {
 
 
 .totale-checkout{
+  background-color: #F5F5F5;  
   height: 70px;
   border-top: 1px solid rgba(0, 0, 0, 0.24);
   position: absolute; /* Imposta il posizionamento assoluto */

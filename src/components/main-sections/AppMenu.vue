@@ -3,17 +3,11 @@ import { store } from '../../stores/store.js';
 import { services } from '../../stores/services';
 
 export default {
-
     name: "AppMenu",
-
-    components: {
-    },
-
     data() {
         return {
             store,
             services
-
         }
     },
     methods: {
@@ -34,15 +28,15 @@ export default {
                 <template v-else>
                     <img class="item-image img-fluid" src="https://img.freepik.com/free-photo/delicious-cartoon-style-fast-food_23-2150287594.jpg?w=1380&t=st=1693509180~exp=1693509780~hmac=3a372721d6b4a948d3eb9f0329a7f3766fda121437ec298de441a03317c055a0" alt="" srcset="">
                 </template>
-                <div class="ms-5">
+                <div class="ms-5 align-text-on-mobile">
                     <h4>{{item.name}}</h4>
                     <span class="text-black-50 d-block pe-3">{{item.description}}</span>
                     <span class="text-black-50 d-block">{{item.price}} €</span>
                 </div>
                 <div class="d-flex">
-                    <div class="custom-imput minus" @click="services.sumPrice() ,services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
+                    <div class="custom-imput minus" @click="services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
                     <div class="custom-imput"></div>
-                    <div class="custom-imput plus"  @click="services.addProduct(item), services.sumPrice()"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
+                    <div class="custom-imput plus"  @click="services.addProduct(item)"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
                 </div>
             </div>
         </div>
@@ -68,12 +62,11 @@ export default {
                             <span class="text-black-50 d-block pt-2 ">{{ item.price }} €</span>
                         </div>
                         <div class="d-flex align-self-end">
-                            <div class="custom-imput minus" @click="services.sumPrice(), services.subProduct(item)"><i
+                            <div class="custom-imput minus" @click="services.subProduct(item)"><i
                                     class="fa-solid fa-minus text-black-50 custom-icon"></i>
                             </div>
                             <div class="custom-imput"></div>
-                            <div class="custom-imput plus" @click="services.sumPrice(), services.addProduct(item)"><i
-                                    class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
+                            <div class="custom-imput plus" @click=" services.addProduct(item)"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
                         </div>
                     </div>
                 </div>
@@ -83,6 +76,11 @@ export default {
 </template>
 
 <style scoped lang="scss">
+
+.align-text-on-mobile{
+    text-align: center;
+}
+
 .card-custom {
     min-width: 300px;
     min-height: 250px;
