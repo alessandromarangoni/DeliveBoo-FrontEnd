@@ -24,16 +24,13 @@ export default {
 }
 </script>
 <template>
-  <div class="header">
-    <!-- <AppHeader /> -->
-  </div>
   <div>
     <AppSidebar />
   </div>
   <router-view></router-view>
-  <div>
+  <!-- <div>
     <AppFooter />
-  </div>
+  </div> -->
 </template>
 
 <style scoped>

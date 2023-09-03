@@ -15,9 +15,9 @@ import OffCanvas from './main-sections/OffCanvas.vue'
 </script>
 
 <template>
-    <div class="custom-sidebar position-fixed align-items-center justify-content-center container-fluid vh-100 m-0 p-0">
-        <div class="row h-50">
-            <div class="col flex-column d-flex justify-content-around align-items-center">
+    <div class="custom-sidebar position-fixed align-items-center justify-content-center vh-100 m-0 p-0">
+        <div class="row h-100 w-100">
+            <div class="col my-col flex-sm-column d-flex justify-content-evenly align-items-center py-sm-16 my-sm-16">
                 <router-link class="text-decoration-none" :to="{name:this.path}">
                     <div class="custom-wrapper d-flex justify-content-center align-items-center">
                         <i id="home" class="fa-solid text-white fa-house fs-3 custom-icon"></i>
@@ -40,12 +40,6 @@ import OffCanvas from './main-sections/OffCanvas.vue'
 <style scoped lang="scss">
 @import "../variables.scss";
 
-
-    @media screen and (max-width: 576px) {
-        .custom-sidebar{
-            display: none !important; 
-        }
-    }
     .custom-sidebar{
         display:flex;
         left: 0;
@@ -64,7 +58,6 @@ import OffCanvas from './main-sections/OffCanvas.vue'
 
             color: #F96A5F;
         }
-
         .custom-wrapper{
             height: 55px;
             width: 55px;
@@ -80,5 +73,21 @@ import OffCanvas from './main-sections/OffCanvas.vue'
             
         }
     }
+
+    @media screen and (max-width: 576px) {
+        .custom-sidebar {
+            position: fixed !important;
+            left: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: 80px !important;
+        }
+
+        .my-col{
+            width: 100%;
+            justify-content: space-evenly;
+        }
+    }
+
 
 </style>

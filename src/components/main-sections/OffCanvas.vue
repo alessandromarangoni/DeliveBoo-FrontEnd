@@ -21,6 +21,7 @@ export default {
             if (localeStorageCart) {
                 localeStorageCart = JSON.parse(localeStorageCart); 
                 store.cart = localeStorageCart;
+                services.sumPrice()
             } else {
                 store.cart = [];
             }
@@ -29,13 +30,13 @@ export default {
 </script>
 
 <template>
-    <button class="btn btn-custom" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBotto"><i class="fa-solid fa-cart-shopping fs-3 custom-icon"></i></button>
-        <div class="offcanvas offcanvas-bottom off-canvas-custom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+    <button class="btn btn-custom" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom"><i class="fa-solid fa-cart-shopping fs-3 custom-icon"></i></button>
+        <div class="offcanvas offcanvas-bottom off-canvas-custom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" >
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+                <h3 class="offcanvas-title px-sm-16" id="offcanvasBottomLabel">IL TUO DELIVEBOO</h3>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body pb-10 mb-10">
+            <div class="offcanvas-body px-sm-16 pb-10 mb-10" id="style-7">
                 <div v-for="item in store.cart" class="w-100 text-start d-flex justify-content-between">
                 <div class="ps-2 ps-xl-5">
                     <h6 class="pt-2 ">{{item.name}}</h6>
@@ -61,10 +62,13 @@ export default {
         </div>
 </template>
 
-<style lang="scss">
-
+<style scoped lang="scss">
 .off-canvas-custom{
     min-height: 50vh!important;
+}
+
+.btn-custom{
+    color: #F96A5F;
 }
 #style-7::-webkit-scrollbar-track
 {
@@ -97,12 +101,10 @@ export default {
   background: rgb(255, 255, 255);
   border-radius: 40px 5px 40px 5px;
 }
-
-
 .totale-checkout{
-  background-color: #F5F5F5;  
+  background-color: #ffffff;  
   height: 70px;
-  border-top: 1px solid rgba(0, 0, 0, 0.24);
+  border-top: 3px solid #f9695f88;
   position: absolute; /* Imposta il posizionamento assoluto */
   bottom: 0;
   right: 0;
