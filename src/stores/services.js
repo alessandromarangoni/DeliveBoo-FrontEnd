@@ -20,7 +20,13 @@ export const services = {
             store.restaurantsAll = r.data.data
             store.loading = false
         })
-    },
+        .catch((error) => {
+                this.loading = false;
+                this.loadingError = error.message;
+                this.$router.push({ name: "error", params: { code: '404' } })
+            });
+        },
+        
     getCategories() {
         axios.get('http://127.0.0.1:8000/api/categories/')
             .then(r => {
@@ -31,7 +37,12 @@ export const services = {
                 });
                 console.log(store.categories)
             })
-            .catch(e => console.log(e))
+            .catch((error) => {
+                this.loading = false;
+                this.loadingError = error.message;
+
+                this.$router.push({ name: "error", params: { code: '404' } })
+            });
     },
     getDataByCategories() {
         console.log('parte la query', store.selectedCategories);
@@ -45,8 +56,11 @@ export const services = {
                     store.restaurants = response.data
                     console.log("Ristoranti trovati", store.restaurants);
                 })
-                .catch(error => {
-                    console.error(error);
+                .catch((error) => {
+                    this.loading = false;
+                    this.loadingError = error.message;
+
+                    this.$router.push({ name: "error", params: { code: '404' } })
                 });
         } else {
             this.getAllRestaurants()
@@ -67,8 +81,11 @@ export const services = {
                     store.restaurants = response.data
                     console.log("Ristoranti trovati", store.restaurants);
                 })
-                .catch(error => {
-                    console.error(error);
+                .catch((error) => {
+                    this.loading = false;
+                    this.loadingError = error.message;
+
+                    this.$router.push({ name: "error", params: { code: '404' } })
                 });
         } else {
             this.getAllRestaurants()

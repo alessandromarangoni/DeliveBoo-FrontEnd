@@ -122,10 +122,24 @@ export default {
 
 .plus {
     border: 3px solid rgba(78, 223, 78, 0.842);
+
+    &:hover{
+        scale: 1.1;
+    }
+    &:active{
+        scale: 1.0;
+    }
 }
 
 .minus {
     border: 3px solid rgba(223, 107, 78, 0.863);
+    
+    &:hover{
+        scale: 1.1;
+    }
+    &:active{
+        scale: 1.0;
+    }
 }
 
 @media screen and (min-width: 577px) {
@@ -141,8 +155,8 @@ export default {
 .desktop{
     display: none;
 }
-.mobile-version{
+// .mobile-version{
 
-}
+// }
 }
 </style>

@@ -55,6 +55,9 @@ export default {
 </template>
 
 <style lang="scss">
+    section{
+        padding-bottom: 100px;
+    }
 
     .text-custom-color{
         color: rgba(0, 0, 0, 0.815);
