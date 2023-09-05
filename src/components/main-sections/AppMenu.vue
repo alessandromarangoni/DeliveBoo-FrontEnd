@@ -35,7 +35,7 @@ export default {
                 </span>
         </div>
        <div v-for="(item, index) in store.menu" :key="index"  class="mb-5">
-        <div class="m-auto d-flex flex-column align-items-center border-b px-4 py-5 border-black-50">
+        <div class="m-auto d-flex flex-column align-items-center border-b px-4 pt-5 pb-10 border-black-50 position-relative">
             <div class="d-flex flex-column align-items-center" v-if="item.is_visible > 0">
                 <template v-if="item.thumb">
                     <img :src="'http://127.0.0.1:8000/storage/' + item.thumb" alt="" srcset="" class=" item-image img-fluid">
@@ -48,8 +48,8 @@ export default {
                     <span class="text-black-50 d-block pe-3">{{item.description}}</span>
                     <span class="text-black-50 d-block">{{item.price}} €</span>
                 </div>
-                <div class="d-flex">
-                    <div class="custom-imput minus" @click="services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
+                <div class="d-flex quantity-wrapper">
+                    <div v-if="getQuantity(item)" class="custom-imput minus" @click="services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
                     <div class="custom-imput">{{getQuantity(item)}}</div>
                     <div class="custom-imput plus"  @click="services.addProduct(item)"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
                 </div>
@@ -71,7 +71,7 @@ export default {
         </div>
         <div class="d-flex ms-5 ps-5 justify-content-evenly gap-3 flex-wrap">
             <div v-for="(item, index) in store.menu" :key="index">
-                <div class="card-custom p-3">
+                <div class="card-custom p-3 position-relative">
                     <template v-if="item.thumb">
                         <img :src="'http://127.0.0.1:8000/storage/' + item.thumb" alt="" srcset="" class=" item-image img-fluid">
                     </template>
@@ -86,7 +86,7 @@ export default {
                             <span class="text-black-50 text-ellipsis d-block pt-2 pe-3">{{ item.description }}</span>
                             <span class="text-black-50 d-block pt-2 ">{{ item.price }} €</span>
                         </div>
-                        <div class="d-flex align-self-end">
+                        <div class="d-flex align-self-end quantity-wrapper">
                             <div v-if="getQuantity(item)" class="custom-imput minus" @click="services.subProduct(item)"><i
                                     class="fa-solid fa-minus text-black-50 custom-icon"></i> 
                             </div>
@@ -135,6 +135,11 @@ export default {
     border-radius: 20px;
 }
 
+.quantity-wrapper {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
 .custom-imput {
     height: 27px;
     width: 27px;
