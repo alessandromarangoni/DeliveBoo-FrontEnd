@@ -87,7 +87,7 @@ export default {
                             <span class="text-black-50 d-block pt-2 ">{{ item.price }} €</span>
                         </div>
                         <div class="d-flex align-self-end">
-                            <div class="custom-imput minus" @click="services.subProduct(item)"><i
+                            <div v-if="getQuantity(item)" class="custom-imput minus" @click="services.subProduct(item)"><i
                                     class="fa-solid fa-minus text-black-50 custom-icon"></i> 
                             </div>
                             <div class="custom-imput">{{ getQuantity(item) }}</div>
@@ -142,6 +142,7 @@ export default {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    padding: 12px;
 }
 
 .custom-icon {

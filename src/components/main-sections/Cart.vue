@@ -114,6 +114,7 @@ import { services } from '../../stores/services';
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    padding: 12px;
 }
 .custom-icon{
     transform: translate(5% , 5%);
