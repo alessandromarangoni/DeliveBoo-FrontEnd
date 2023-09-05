@@ -21,9 +21,7 @@ export const services = {
             store.loading = false
         })
         .catch((error) => {
-                this.loading = false;
-                this.loadingError = error.message;
-                this.$router.push({ name: "error", params: { code: '404' } })
+            this.$router.push({ name: "error", params: { code: '404' } })
             });
         },
         

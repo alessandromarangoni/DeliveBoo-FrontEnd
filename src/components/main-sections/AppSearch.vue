@@ -25,13 +25,9 @@ export default {
         <div class="align-center-on-md p-sm-3">
             <section>
                 <div v-if='this.store.restaurants.length > 0'>
-                    <div class="text-center pb-5 mp-5">
-                            <h2>Risultati</h2>
-                    </div>
-
-                    <div class="d-flex justify-content-evenly gap-3 flex-wrap">
+                    <div class="d-flex justify-content-evenly gap-4 flex-wrap mt-sm-16">
                         <div v-for="restaurant in store.restaurants" :key="restaurant.id">
-                            <div class="card-custom">
+                            <div class="card-custom mt-5">
                                 <router-link class="text-decoration-none text-black" :to=" { name:this.path, params:{'id':restaurant.id} }">
                                     <img :src="'http://127.0.0.1:8000/storage/'+ restaurant.thumb " alt="" v-if="restaurant.thumb" class="card-img-top custom-image rounded-3">
                                     <div class="card-body pt-2">
