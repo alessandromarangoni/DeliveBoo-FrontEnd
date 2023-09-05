@@ -104,9 +104,9 @@ export const services = {
 
         if (cart.some((e) => e.restaurant_id !== item.restaurant_id)) {
             console.log('Nel carrello hai già prodotti di un altro ristorante. Svuota prima il carrello!');
-            return
+            store.warning = true;
             // blocca la funzione se nel carrello ci sono prodotti di un ristorante diverso
-            // qui andrà implementata una funzione che mostra un messaggio "svuota prima il carrello del ristorante precedente"
+            return
         }
 
         // VERIFICA SE L'ITEM è GIA' PRESENTE NEL CARRELLO E NE AGGIUNGE LA QUANTITA'

@@ -24,6 +24,16 @@ export default {
 <template>
     <!-- MOBILE VERSION -->
     <div class="container-fluid set-bg w-75 p-0 pb-5 border rounded-5 mobile-version pb-13 mb-5">
+        <div v-if="store.warning"
+                class="warning position-relative mb-10 mt-4 text-danger d-flex justify-content-center mx-auto rounded border border-danger bg-danger-subtle px-4 py-3 w-50"
+                role="alert">
+        
+                <div class="">Nel carrello sono presenti prodotti di un altro ristorante. Svuota il carrello per ordinare!</div>
+        
+                <span @click="store.warning = false" class="position-absolute top-0 end-0 px-1 py-0 btn text-danger">
+                    x
+                </span>
+        </div>
        <div v-for="(item, index) in store.menu" :key="index"  class="mb-5">
         <div class="m-auto d-flex flex-column align-items-center border-b px-4 py-5 border-black-50">
             <div class="d-flex flex-column align-items-center" v-if="item.is_visible > 0">
@@ -49,6 +59,16 @@ export default {
     </div>
 
     <div class="container-fluid p-5 desktop w-75">
+        <div v-if="store.warning"
+                class="warning position-relative mb-10 text-danger d-flex justify-content-center mx-auto rounded border border-danger bg-danger-subtle px-4 py-3 w-50"
+                role="alert">
+        
+                <div class="">Nel carrello sono presenti prodotti di un altro ristorante. Svuota il carrello per ordinare!</div>
+        
+                <span @click="store.warning = false" class="position-absolute top-0 end-0 px-1 py-0 btn text-danger">
+                    x
+                </span>
+        </div>
         <div class="d-flex ms-5 ps-5 justify-content-evenly gap-3 flex-wrap">
             <div v-for="(item, index) in store.menu" :key="index">
                 <div class="card-custom p-3">
@@ -82,6 +102,9 @@ export default {
 
 <style scoped lang="scss">
 
+.warning {
+    width: fit-content;
+}
 .align-text-on-mobile{
     text-align: center;
 }
