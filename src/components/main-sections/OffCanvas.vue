@@ -131,6 +131,7 @@ export default {
 .plus{
     border: 3px solid rgba(78, 223, 78, 0.842);
     &:hover{
+        cursor: pointer;
         scale: 1.1;
     }
     &:active{
@@ -141,6 +142,7 @@ export default {
 .minus{
     border: 3px solid rgba(223, 107, 78, 0.863);
     &:hover{
+        cursor: pointer;
         scale: 1.1;
     }
     &:active{
