@@ -33,7 +33,7 @@
     @import '../variables.scss';
 
     .custom-jumbotron{
-        background-image: url('https://i.postimg.cc/vTtBSSPL/slide3.png');
+        background-image: url('../assets/slide3.png');
         background-repeat: no-repeat;
         background-size: auto 100% ;
         background-position-x: 100px;
