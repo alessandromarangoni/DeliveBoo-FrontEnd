@@ -158,7 +158,7 @@ export const services = {
         store.cart.forEach(element => {
             sum += (element.price * element.quantity)
         });
-        store.total = sum;
+        store.total = sum.toFixed(2);
     }
     
 }
