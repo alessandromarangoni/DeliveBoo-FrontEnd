@@ -14,18 +14,7 @@ export const services = {
         console.log("Categorie selezionate:", store.selectedCategories)
         this.getDataByCategories()
     },
-    getAllRestaurants() {
-        axios.get('http://127.0.0.1:8000/api/restaurants/').then(r => {
-            store.restaurants = r.data.data
-            store.restaurantsAll = r.data.data
-            store.loading = false
-        })
-        .catch((error) => {
-                this.loading = false;
-                this.loadingError = error.message;
-                this.$router.push({ name: "error", params: { code: '404' } })
-            });
-        },
+
         
     getCategories() {
         axios.get('http://127.0.0.1:8000/api/categories/')
