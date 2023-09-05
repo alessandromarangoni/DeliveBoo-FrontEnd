@@ -40,8 +40,6 @@
         height: 45vh;
         background-color: #90d4ce;
         z-index: -1;
-        
-
     }
 h1{
     font-family: 'Lobster', cursive;
