@@ -10,7 +10,7 @@ export default {
             services
         }
     },
-    methods: {
+        methods: {
 
     }
 }
@@ -18,8 +18,8 @@ export default {
 
 <template>
     <!-- MOBILE VERSION -->
-    <div class="container-fluid set-bg w-75 p-0 pb-5 border rounded-5 mobile-version">
-       <div v-for="(item, index) in store.menu" :key="index" >
+    <div class="container-fluid set-bg w-75 p-0 pb-5 border rounded-5 mobile-version pb-13 mb-5">
+       <div v-for="(item, index) in store.menu" :key="index"  class="mb-5">
         <div class="m-auto d-flex flex-column align-items-center border-b px-4 py-5 border-black-50">
             <div class="d-flex flex-column align-items-center" v-if="item.is_visible > 0">
                 <template v-if="item.thumb">

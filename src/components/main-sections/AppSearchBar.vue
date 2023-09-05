@@ -33,7 +33,6 @@ export default {
         theme="light"
         variant="solo"
         class="w-100"
-        
         >
         </v-autocomplete>
         <v-btn class="custom-button" @click="services.getDataByCategories()">

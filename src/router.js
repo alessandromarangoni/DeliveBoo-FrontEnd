@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AppHome from './components/pages/AppHome.vue';
 import AppRestaurant from './components/pages/AppRestaurant.vue';
+import CustomerData from './components/pages/CustomerData.vue'
 import NotFound from './components/NotFound.vue'
 
 const router = createRouter({
@@ -20,6 +21,11 @@ const router = createRouter({
                 path: '/error/:code',
                 name: 'error',
                 component: NotFound
+            },
+            {
+                path: '/review',
+                name: 'CustomerData',
+                component: CustomerData
             }
 
         ]
