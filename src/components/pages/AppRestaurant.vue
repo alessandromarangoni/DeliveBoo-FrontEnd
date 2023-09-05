@@ -108,8 +108,15 @@ import axios from 'axios';
         </div>
         <div class="d-md-flex justify-content-md-end align-items-md-center">
             <div class="d-flex justify-content-center cart-menu-wrapper align-items-md-center w-100">
-                <AppMenu />
                 
+                <div v-if="!this.loading">
+                  <AppMenu />
+                </div>
+                <div v-else-if="this.loading ">
+                   <div class="text-center pt-5 mt-5 w-50 m-auto set-height h-100vh d-flex justify-content-center align-items-center ">
+                            <span class="loader"></span>
+                    </div>
+                </div>
                 <div class="cart-container position-relative me-5 p-3">
                     <div>
                         <Cart />
@@ -121,6 +128,9 @@ import axios from 'axios';
 </template>
 
 <style scoped lang="css">
+.h-100vh{
+  height: 100vh;
+}
 .cart-menu-wrapper{
     width: calc(100% - 100px)
 }
