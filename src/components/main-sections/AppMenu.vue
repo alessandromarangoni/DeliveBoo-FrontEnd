@@ -11,7 +11,12 @@ export default {
         }
     },
     methods: {
-
+        getQuantity(e) {
+            let found = store.cart.find((product) => product.id == e.id)
+            if (found) {
+                return found.quantity
+            }
+        }
     }
 }
 </script>
@@ -35,7 +40,7 @@ export default {
                 </div>
                 <div class="d-flex">
                     <div class="custom-imput minus" @click="services.subProduct(item)"><i class="fa-solid fa-minus text-black-50 custom-icon"></i></div>
-                    <div class="custom-imput"></div>
+                    <div class="custom-imput">{{getQuantity(item)}}</div>
                     <div class="custom-imput plus"  @click="services.addProduct(item)"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
                 </div>
             </div>
@@ -63,9 +68,9 @@ export default {
                         </div>
                         <div class="d-flex align-self-end">
                             <div class="custom-imput minus" @click="services.subProduct(item)"><i
-                                    class="fa-solid fa-minus text-black-50 custom-icon"></i>
+                                    class="fa-solid fa-minus text-black-50 custom-icon"></i> 
                             </div>
-                            <div class="custom-imput"></div>
+                            <div class="custom-imput">{{ getQuantity(item) }}</div>
                             <div class="custom-imput plus" @click=" services.addProduct(item)"><i class="fa-solid fa-plus text-black-50 custom-icon"></i></div>
                         </div>
                     </div>
