@@ -130,7 +130,7 @@ export default {
 
 .button { 
   margin: 15px 0;
-  width: 70%;
+  width: 100%;
   height: 50px;
   font-size: 18px;
   line-height: 50px;
