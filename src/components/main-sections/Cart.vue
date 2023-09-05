@@ -26,7 +26,7 @@ import { services } from '../../stores/services';
 </script>
 <!-- //  al refresh della pagina il carrello risulta vuoto -->
 <template>
-    <div class="card-custom-menu position-relative p-4">
+    <div v-show="store.cart.length > 0" class="card-custom-menu position-relative p-4">
         <div class="p-1 set-height" id="style-7">
             <div>
                 <h3 class="pt-3 pb-4 me-5">Carrello</h3>
