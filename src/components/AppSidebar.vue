@@ -18,14 +18,14 @@ import OffCanvas from './main-sections/OffCanvas.vue'
     <div class="custom-sidebar position-fixed align-items-center justify-content-center vh-100 m-0 p-0">
         <div class="row h-100 w-100">
             <div class="col my-col flex-sm-column d-flex justify-content-evenly align-items-center py-sm-16 my-sm-16">
+                <div id="user" class="d-flex justify-content-center align-items-center">
+                    <i class="fa-regular fa-user fs-3 custom-icon"></i>
+                </div>
                 <router-link class="text-decoration-none" :to="{name:this.path}">
                     <div class="custom-wrapper d-flex justify-content-center align-items-center">
                         <i id="home" class="fa-solid text-white fa-house fs-3 custom-icon"></i>
                     </div>
                 </router-link>
-                <div id="user" class="d-flex justify-content-center align-items-center">
-                    <i class="fa-regular fa-user fs-3 custom-icon"></i>
-                </div>
                 <div id="cart" class="d-flex justify-content-center align-items-center">
                     <OffCanvas />
                 </div>
