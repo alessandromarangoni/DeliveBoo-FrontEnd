@@ -118,7 +118,7 @@ import axios from 'axios';
                     </div>
                 </div>
                 <div class="cart-container position-relative me-5 p-3">
-                    <div>
+                    <div v-if="!this.loading">
                         <Cart />
                     </div>
                 </div>
