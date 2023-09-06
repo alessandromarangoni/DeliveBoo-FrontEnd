@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template>
-    <div class="d-none d-sm-flex gx-3 justify-content-end pt-5 mt-5">
+    <div class="d-none d-sm-flex gx-3 justify-content-end pt-5 mt-5 ">
         <div class="align-center-on-md">
             <v-sheet class="mx-auto carousel-container w-75">
                 <v-slide-group v-model="store.categories" class="pa-4" selected-class="bg-primary" multiple show-arrows>
@@ -36,7 +36,7 @@ export default {
                                 <div class="text-white fw-bolder fs-4 text-custom position-relative">
                                     <img :src="'http://127.0.0.1:8000/categories/' + item.thumb" alt=""
                                         class="w-100 carousel-img">
-                                    <span class="position-absolute slider-cards-title text-center">{{ item.name }}</span>
+                                    <span class="position-absolute slider-cards-title text-center categorieFont">{{ item.name }}</span>
                                 </div>
                             </div>
                         </v-card>
@@ -58,6 +58,13 @@ export default {
 <style scoped lang="scss">
 @import "/src/variables.scss";
 
+.categorieFont{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:800;
+    font-size: 21px ;
+    color: white!important;
+}
+
 .active-category {
     border: 2px solid orange;
     box-shadow: 0 0 2px 1px orange;
@@ -71,8 +78,8 @@ export default {
     top: 50%;
     left: 50%;
     z-index: 999;
-    -webkit-text-stroke: #000000;
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke: black;
+    -webkit-text-stroke-width: 1.5px;
     transform: translate(-50%, -50%);
     color: rgb(255, 255, 255);
 }
