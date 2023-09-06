@@ -1,11 +1,20 @@
 <script>
+import AppHeader from '../AppHeader.vue';
+import AnotherFooter from '../main-sections/AnotherFooter.vue';
 export default {
-    name:'CustomerData'
+    name:'CustomerData',
+     components: {
+            AppHeader,
+            AnotherFooter,
+        }
 }
 </script>
 
 <template>
-    <div class="d-flex align-items-center vh-100 m-auto custom">
+<AppHeader />
+<svg class="wave-1hkxOo headerWave" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none"><path class="wavePath-haxJK1 animationPaused-2hZ4IO" d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z" fill="currentColor" ></path></svg> 
+
+    <div class="d-flex align-items-center transform m-auto custom-card z-index">
         <div class="content m-auto w-50 ">
             <div class="text">
                 Inserisci i tuoi dati
@@ -43,10 +52,45 @@ export default {
             </form>
         </div>
     </div>
-
+     <div class="bg-custom position-fixed z-index-less">
+        <svg class="wave-1hkxOo footerWave" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none"><path class="wavePath-haxJK1 animationPaused-2hZ4IO" d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z" fill="currentColor" ></path></svg> 
+        <AnotherFooter />
+     </div>
 </template>
 
 <style scoped lang="scss">
+
+.z-index-less{
+    z-index: 0!important;
+}
+
+.z-index{
+    z-index: 99!important;
+}
+
+.footerWave{
+    z-index: -1!important;
+    color: #f96a5f;
+    position: absolute;
+    bottom: 50px;
+}
+
+.headerWave{
+    margin-top: -3px;
+    color:white ;
+    background-color:  #90d4ce;
+}
+
+.bg-custom{
+    background-color: #F96A5F;
+    margin-left: 100px;
+    width: calc(100% - 100px);
+    bottom:0
+}
+
+.transform{
+    transform: translateY(-35%);
+}
     .content {
         width: 70%;
         padding: 40px 40px;
@@ -155,6 +199,21 @@ export default {
     .content{
         width: 70%!important;
     }
+    .footerWave{
+        bottom: 80px;
+    }
+
+    .bg-custom{
+        background-color: #F96A5F;
+        margin-left: 0;
+        width:100% ;
+        bottom:80px
+    }
+
+    .content{
+        width: 90%!important;
+    }
+
 }
 
 @media screen and (min-width:577px) and (max-width:780px){
@@ -167,6 +226,15 @@ export default {
 @media screen and (min-width:1400px){
     .content{
         width: 30%!important;
+    }
+    .transform{
+        transform: translateY(-50%);
+    }
+}
+
+@media screen and (max-width: 959px) {
+    .footerWave{
+        bottom: 95px;
     }
 }
 
