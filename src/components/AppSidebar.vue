@@ -1,6 +1,6 @@
 <script>
 import OffCanvas from './main-sections/OffCanvas.vue'
-
+import { store } from '../stores/store.js';
     export default {
         name: "AppSidebar",
         components:{
@@ -8,9 +8,25 @@ import OffCanvas from './main-sections/OffCanvas.vue'
         },
         data() {
             return{
-            path:'home'
+            path:'home',
+            store
             }
-        }
+        },
+        methods: {
+            getTotalQuantity() {
+                const cart = JSON.parse(localStorage.getItem('cart'));
+                if (!cart) {
+                    return 0; 
+                }
+                
+                let totalQuantity = 0;
+                for (const item of cart) {
+                    totalQuantity += item.quantity;
+                }
+                
+                return totalQuantity;
+            }
+        },
     }
 </script>
 
@@ -28,7 +44,10 @@ import OffCanvas from './main-sections/OffCanvas.vue'
                         <i id="home" class="fa-solid text-white fa-house fs-3 custom-icon"></i>
                     </div>
                 </router-link>
-                <div id="cart" class="d-flex justify-content-center align-items-center">
+                <div id="cart" class="d-flex justify-content-center align-items-center position-relative">
+                        <span v-if="store.cart.length > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-custom">
+                             {{ getTotalQuantity() }}
+                        </span>
                     <OffCanvas />
                 </div>
                 <div id="search" class="d-flex justify-content-center align-items-center">
@@ -42,6 +61,9 @@ import OffCanvas from './main-sections/OffCanvas.vue'
 <style scoped lang="scss">
 @import "../variables.scss";
 
+    .bg-custom{
+        background-color: #F96A5F;
+    }
     .custom-sidebar{
         display:flex;
         left: 0;
