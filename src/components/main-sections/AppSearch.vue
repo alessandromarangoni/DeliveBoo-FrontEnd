@@ -1,7 +1,7 @@
 <script>
 import {store} from '../../stores/store'
 import { services } from '../../stores/services'
-
+import axios from 'axios'
 
 export default {
     data(){
@@ -12,10 +12,22 @@ export default {
         }
     },
     methods:{
+        getAllRestaurants() {
+        axios.get('http://127.0.0.1:8000/api/restaurants/').then(r => {
+            store.restaurants = r.data.data
+            store.restaurantsAll = r.data.data
+            store.loading = false
+        })
+        .catch((error) => {
+            console.error(error);
+            store.loading = false;
+            this.$router.push({ name: "error", params: { code: '404' } })
+        });
+    },
     },
     mounted(){
         if (store.selectedCategories.length < 1) {
-            services.getAllRestaurants()
+            this.getAllRestaurants()
         }
     }
 }
