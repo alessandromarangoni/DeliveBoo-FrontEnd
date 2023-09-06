@@ -23,17 +23,19 @@ export default {
 
 <template>
     <!-- MOBILE VERSION -->
-    <div class="container-fluid set-bg w-75 p-0 pb-5 border rounded-5 mobile-version pb-13 mb-5">
+
         <div v-if="store.warning"
-                class="warning position-relative mb-10 mt-4 text-danger d-flex justify-content-center mx-auto rounded border border-danger bg-danger-subtle px-4 py-3 w-50"
-                role="alert">
-        
-                <div class="">Nel carrello sono presenti prodotti di un altro ristorante. Svuota il carrello per ordinare!</div>
-        
-                <span @click="store.warning = false" class="position-absolute top-0 end-0 px-1 py-0 btn text-danger">
-                    x
-                </span>
+            class="mobile-version warning position-relative mb-10 mt-4 text-danger d-flex justify-content-center mx-auto rounded border border-danger bg-danger-subtle px-4 py-3 w-75"
+            role="alert">
+    
+            <div class="">Nel carrello sono presenti prodotti di un altro ristorante. Svuota il carrello per ordinare!</div>
+    
+            <span @click="store.warning = false" class="position-absolute top-0 end-0 px-1 py-0 btn text-danger">
+                x
+            </span>
         </div>
+
+    <div class="container-fluid set-bg w-75 p-0 pb-5 border rounded-5 mobile-version pb-13 mb-5">
        <div v-for="(item, index) in store.menu" :key="index"  class="mb-5">
         <div class="m-auto d-flex flex-column align-items-center border-b px-4 pt-5 pb-10 border-black-50 position-relative">
             <div class="d-flex flex-column align-items-center" v-if="item.is_visible > 0">
@@ -60,13 +62,13 @@ export default {
 
     <div class="container-fluid p-5 desktop w-75">
         <div v-if="store.warning"
-                class="warning position-relative mb-10 text-danger d-flex justify-content-center mx-auto rounded border border-danger bg-danger-subtle px-4 py-3 w-50"
+                class="warning position-relative mb-10 text-danger d-flex justify-content-center mx-auto rounded border border-danger bg-danger-subtle px-4 py-3 w-75"
                 role="alert">
         
-                <div class="">Nel carrello sono presenti prodotti di un altro ristorante. Svuota il carrello per ordinare!</div>
+                <div class="fs-5">Nel carrello sono presenti prodotti di un altro ristorante. <br> Svuota il carrello per ordinare!</div>
         
                 <span @click="store.warning = false" class="position-absolute top-0 end-0 px-1 py-0 btn text-danger">
-                    x
+                    <i class="fa-solid fa-x"></i>
                 </span>
         </div>
         <div class="d-flex ms-5 ps-5 justify-content-evenly gap-3 flex-wrap">
@@ -181,7 +183,7 @@ export default {
 @media screen and (min-width: 577px) {
 
     .mobile-version {
-        display: none;
+        display: none!important;
     }
 
 }
@@ -191,8 +193,5 @@ export default {
 .desktop{
     display: none;
 }
-// .mobile-version{
-
-// }
 }
 </style>
