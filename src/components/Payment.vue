@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { store } from '../stores/store';
 
 export default {
 
@@ -9,57 +10,70 @@ export default {
             token: ""
         }
     },
+    async mounted() {
+        console.log('montato');
+        try {
+            await this.getToken(); // Attendere il completamento del getToken prima di procedere
+            this.setupBraintree(); // Chiamare un nuovo metodo per configurare Braintree
+        } catch (error) {
+            console.error("Errore durante il recupero del token:", error);
+        }
+    },
     methods: {
-        async braintreeMethods() {
-            const form = document.getElementById('payment-form');
-            // Step two: create a dropin instance using that container (or a string
-            //   that functions as a query selector such as '#dropin-container')
-            braintree.dropin.create({
-                authorization: this.token,
-                container: document.getElementById('dropin-container'),
-                // ...plus remaining configuration
-            }).then((dropinInstance) => {
-
-                dropinInstance.requestPaymentMethod().then((payload) => {
-                    // Step four: when the user is ready to complete their
-                    //   transaction, use the dropinInstance to get a payment
-                    //   method nonce for the user's selected payment method, then add
-                    //   it a the hidden field before submitting the complete form to
-                    //   a server-side integration
-                    document.getElementById('nonce').value = payload.nonce;
-                    form.submit();
-                    console.log(dropinInstance);
-                    console.log("OK");
-                    // Use 'dropinInstance' here
-                    // Methods documented at https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
-                }).catch((error) => { throw error; });
-            }).catch((error) => {
-                console.log(error);
-            });
-        },
         async getToken() {
             await axios.get("http://127.0.0.1:8000/api/orders/generate")
                 .then(response => {
-                    this.token = response.data.token
-                    this.braintreeMethods()
-                    console.log(this.token)
-
-                }).catch(err => {
-                    console.log(err);
+                    this.token = response.data.token;
+                    console.log("Token ottenuto con successo:", this.token);
+                })
+                .catch(error => {
+                    console.error("Errore durante il recupero del token:", error);
                 })
         },
-    },
-    mounted() {
-        this.getToken();
+        setupBraintree() {
+            // Configura Braintree solo dopo aver ottenuto il token con successo
+            braintree.dropin.create({
+                authorization: this.token,
+                container: document.getElementById('dropin-container'),
+                // ... altre configurazioni
+            }).then((dropinInstance) => {
+                // ... il resto del codice di configurazione di Braintree
+            }).catch((error) => {
+                console.error("Errore durante la configurazione di Braintree:", error);
+            });
+        },
+        async submitPayment() {
+            const form = document.getElementById('payment-form');
+            const nonceInput = document.getElementById('nonce');
+            // Utilizza Braintree per ottenere il nonce del pagamento
+            braintree.dropin.create({
+                authorization: this.token,
+                container: document.getElementById('dropin-container'),
+            }).then((dropinInstance) => {
+                dropinInstance.requestPaymentMethod(function (err, payload) {
+                    if (err) {
+                        console.error("Errore durante la richiesta del metodo di pagamento:", err);
+                        return;
+                    }
+
+                    // Assegna il nonce del pagamento all'input hidden
+                    nonceInput.value = payload.nonce;
+
+                    // Ora puoi inviare il form al backend
+                    form.submit();
+                });
+            }).catch((error) => {
+                console.error("Errore durante la configurazione di Braintree:", error);
+            });
+        },
+
     }
 }
 
 </script>
 <template>
-    <form id="payment-form" action="http://127.0.0.1:8000/api/make/payment" method="post">
-        <!-- Putting the empty container you plan to pass to
-      'braintree.dropin.create' inside a form will make layout and flow
-      easier to manage -->
+    <form id="payment-form" action="http://127.0.0.1:8000/api/orders/make/payment" method="post">
+
         <div class="w-75 m-auto" id="dropin-container"></div>
         <input type="submit" />
         <input type="hidden" id="nonce" name="payment_method_nonce" />
