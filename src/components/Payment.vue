@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import { store } from '../stores/store';
+import braintree from 'braintree-web';
 
 export default {
 
@@ -11,13 +12,51 @@ export default {
         }
     },
     async mounted() {
-        console.log('montato');
-        try {
-            await this.getToken(); // Attendere il completamento del getToken prima di procedere
-            this.setupBraintree(); // Chiamare un nuovo metodo per configurare Braintree
-        } catch (error) {
-            console.error("Errore durante il recupero del token:", error);
-        }
+
+
+        // token
+        axios.get('http://127.0.0.1:8000/api/orders/generate').then((res) => {
+
+
+            braintree.client.create({
+                authorization: res.data.token
+
+            })
+                .then(clientInstance => {
+                    let options = {
+                        client: clientInstance,
+                        styles: {
+                            input: {
+                                'font-size': '15px',
+                                'font-family': 'Open Sans'
+                            }
+                        },
+                        fields: {
+                            number: {
+                                selector: '#creditCardNumber',
+                                placeholder: '0000-0000-0000-0000'
+                            },
+                            cvv: {
+                                selector: '#cvv',
+                                placeholder: '123'
+                            },
+                            expirationDate: {
+                                selector: '#expireDate',
+                                placeholder: '00 / 00'
+                            }
+                        }
+                    }
+                    return braintree.hostedFields.create(options)
+                })
+                .then(hostedFieldInstance => {
+                    this.hostedFieldInstance = hostedFieldInstance;
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
+
+        })
     },
     methods: {
         async getToken() {
@@ -30,52 +69,51 @@ export default {
                     console.error("Errore durante il recupero del token:", error);
                 })
         },
-        setupBraintree() {
-            // Configura Braintree solo dopo aver ottenuto il token con successo
-            braintree.dropin.create({
-                authorization: this.token,
-                container: document.getElementById('dropin-container'),
-                // ... altre configurazioni
-            }).then((dropinInstance) => {
-                // ... il resto del codice di configurazione di Braintree
-            }).catch((error) => {
-                console.error("Errore durante la configurazione di Braintree:", error);
-            });
-        },
-        async submitPayment() {
-            const form = document.getElementById('payment-form');
-            const nonceInput = document.getElementById('nonce');
-            // Utilizza Braintree per ottenere il nonce del pagamento
-            braintree.dropin.create({
-                authorization: this.token,
-                container: document.getElementById('dropin-container'),
-            }).then((dropinInstance) => {
-                dropinInstance.requestPaymentMethod(function (err, payload) {
-                    if (err) {
-                        console.error("Errore durante la richiesta del metodo di pagamento:", err);
-                        return;
-                    }
+        sendPayment() {
 
-                    // Assegna il nonce del pagamento all'input hidden
-                    nonceInput.value = payload.nonce;
 
-                    // Ora puoi inviare il form al backend
-                    form.submit();
-                });
-            }).catch((error) => {
-                console.error("Errore durante la configurazione di Braintree:", error);
-            });
-        },
+            this.hostedFieldInstance.tokenize().then(payload => {
+                axios.post('http://127.0.0.1:8000/api/orders/make/payment', {
 
+                    order: this.$route.params.id,
+                    // token
+                    token: payload.nonce,
+                    // array oggetto user
+
+
+
+                }).then(resp => {
+                    // this.store.method.delete();
+                    // this.$router.push({ path: '/restaurants', query: { success: true } });
+                    console.log(resp);
+                })
+            })
+                .catch(err => {
+                    console.error(err);
+                })
+        }
     }
 }
-
 </script>
 <template>
-    <form id="payment-form" action="http://127.0.0.1:8000/api/orders/make/payment" method="post">
+    <form id="payment-form" @submit.prevent="sendPayment()" method="post">
 
-        <div class="w-75 m-auto" id="dropin-container"></div>
+
+
+        <div class="w-75 m-auto" id="dropin-container">
+
+            <label for="creditCardNumber">Numero Carta</label>
+            <div id="creditCardNumber" class="form-control mb-2"></div>
+
+            <label for="expireDate">Data di Scadenza</label>
+            <div id="expireDate" class="form-control mb-2"></div>
+
+            <div @mouseenter="hover = true" @mouseleave="hover = false" class="cvv-input">
+                <label for="cvv">CVV</label>
+                <div id="cvv" class="form-control mb-2"></div>
+            </div>
+        </div>
         <input type="submit" />
-        <input type="hidden" id="nonce" name="payment_method_nonce" />
+
     </form>
 </template>
