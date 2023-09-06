@@ -1,13 +1,11 @@
 <script>
 import AppHeader from './AppHeader.vue';
-import AppFooter from './AppFooter.vue';
 import AnotherFooter from './main-sections/AnotherFooter.vue';
 
 export default {
     name: "NotFound",
     components:{
         AppHeader,
-        AppFooter,
         AnotherFooter
     },
     data() {
@@ -33,7 +31,6 @@ export default {
             </div>
         </div>
     </section>
-    <AppFooter />
 </template>
 
 <style scoped lang="scss">

@@ -1,7 +1,6 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppSidebar from './components/AppSidebar.vue';
-import AppFooter from './components/AppFooter.vue';
 import { store } from '../src/stores/store.js';
 
 
@@ -9,8 +8,6 @@ export default {
   components: {
     AppHeader,
     AppSidebar,
-    AppFooter,
-
   },
   data() {
     return {
@@ -28,9 +25,6 @@ export default {
     <AppSidebar />
   </div>
   <router-view></router-view>
-  <!-- <div>
-    <AppFooter />
-  </div> -->
 </template>
 
 <style scoped>
