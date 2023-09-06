@@ -36,7 +36,7 @@ export default {
                                 <div class="text-white fw-bolder fs-4 text-custom position-relative">
                                     <img :src="'http://127.0.0.1:8000/categories/' + item.thumb" alt=""
                                         class="w-100 carousel-img">
-                                    <span class="position-absolute slider-cards-title">{{ item.name }}</span>
+                                    <span class="position-absolute slider-cards-title text-center">{{ item.name }}</span>
                                 </div>
                             </div>
                         </v-card>
