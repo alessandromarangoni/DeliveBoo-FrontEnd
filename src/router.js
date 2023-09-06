@@ -29,7 +29,7 @@ const router = createRouter({
                 component: CustomerData
             },
             {
-                path: '/payment',
+                path: '/payment/:id',
                 name: 'Payment',
                 component: Payment
             }
