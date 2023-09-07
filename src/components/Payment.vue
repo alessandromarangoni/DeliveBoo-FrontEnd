@@ -19,6 +19,7 @@ export default {
         return {
             token: "",
             store,
+            success:''
         }
     },
     async mounted() {
@@ -96,6 +97,8 @@ export default {
                     // this.store.method.delete();
                     // this.$router.push({ path: '/restaurants', query: { success: true } });
                     console.log(resp);
+                    this.success = resp.data.success
+                    console.log(this.success)
                 })
             })
                 .catch(err => {
@@ -134,6 +137,10 @@ export default {
             </div>
         </div>
 
+        <div v-if="this.success == true ">
+            <h1>Il tuo ordine è avvenuto con successo</h1>
+        </div>
+
         <form id="payment-form" @submit.prevent="sendPayment()" method="post" class="d-flex flex-column justify-content-center align-items-center mb-5">
 
             <div class="w-75 m-auto pt-5 mt-5" id="dropin-container">
@@ -163,6 +170,8 @@ export default {
         </svg>
         <AnotherFooter />
     </div>
+
+    
 
 </template>
 
