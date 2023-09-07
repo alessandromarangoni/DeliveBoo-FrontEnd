@@ -4,6 +4,8 @@ import AppRestaurant from './components/pages/AppRestaurant.vue';
 import CustomerData from './components/pages/CustomerData.vue'
 import NotFound from './components/NotFound.vue'
 import Payment from './components/Payment.vue'
+import success from './components/pages/success.vue';
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -32,6 +34,11 @@ const router = createRouter({
                 path: '/payment/:id',
                 name: 'Payment',
                 component: Payment
+            },
+            {
+                path: '/success',
+                name: 'success',
+                component: success
             }
 
         ]

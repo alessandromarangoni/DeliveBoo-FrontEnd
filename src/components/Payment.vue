@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import { store } from '../stores/store';
+import { services } from "../stores/services";
 import braintree from 'braintree-web';
 import AppHeader from './AppHeader.vue';
 import AnotherFooter from '../components/main-sections/AnotherFooter.vue';
@@ -19,7 +20,8 @@ export default {
         return {
             token: "",
             store,
-            success:''
+            success:'',
+            services
         }
     },
     async mounted() {
@@ -98,7 +100,11 @@ export default {
                     // this.$router.push({ path: '/restaurants', query: { success: true } });
                     console.log(resp);
                     this.success = resp.data.success;
-                    store.cart=[];
+                    if(this.success == true ){
+                        store.cart=[];
+                        services.cleanCart()
+                        this.$router.push('/success')
+                    }
                     console.log(this.success)
                 })
             })
