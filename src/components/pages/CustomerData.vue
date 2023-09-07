@@ -81,14 +81,12 @@ export default {
                 </div>
 
                 <div class="field">
-                    <input v-model="email" required type="mail" class="input">
+                    <input v-model="email" required type="email" class="input" placeholder="Email">
                     <span class="span"></span>
-                    <label class="label">Email</label>
                 </div>
                 <div class="field">
-                    <input v-model="note" required type="text" class="input">
+                    <input v-model="note" type="text" class="input" placeholder="Note">
                     <span class="span"></span>
-                    <label class="label">Note</label>
                 </div>
                 <button type="submit" class="button">Conferma</button>
             </form>
