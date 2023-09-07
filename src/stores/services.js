@@ -1,4 +1,5 @@
 import { store } from "./store"
+import {router} from '../router';
 import axios from "axios"
 
 export const services = {
@@ -29,13 +30,13 @@ export const services = {
                 this.loading = false;
                 this.loadingError = error.message;
 
-                this.$router.push({ name: "error", params: { code: '404' } })
+                router.push({ name: "error", params: { code: '404' } })
             });
     },
     getDataByCategories() {
         console.log('parte la query', store.selectedCategories);
         if (store.selectedCategories.length > 0) {
-            axios.get('http://127.0.0.1:8000/api/restaurants/by-categories/', {
+            axios.get('http://127.0.0.1:8000/api/restaurants/by-categories', {
                 params: {
                     category_ids: store.selectedCategories.map(category => category.id)
                 }
@@ -48,7 +49,7 @@ export const services = {
                     this.loading = false;
                     this.loadingError = error.message;
 
-                    this.$router.push({ name: "error", params: { code: '404' } })
+                    router.push({ name: "error", params: { code: '404' } });
                 });
         } else {
             this.getAllRestaurants()
@@ -57,31 +58,21 @@ export const services = {
             console.log('store.restaurants', store.restaurants);
         }
     },
-    getDataByCategoriesIds() {
-        console.log('parte la query', store.selectedCategoriesIds);
-        if (store.selectedCategoriesIds.length > 0) {
-            axios.get('http://127.0.0.1:8000/api/restaurants/by-categories/', {
-                params: {
-                    category_ids: store.selectedCategoriesIds
-                }
-            })
-                .then(response => {
-                    store.restaurants = response.data
-                    console.log("Ristoranti trovati", store.restaurants);
-                })
-                .catch((error) => {
-                    this.loading = false;
-                    this.loadingError = error.message;
 
-                    this.$router.push({ name: "error", params: { code: '404' } })
-                });
-        } else {
-            this.getAllRestaurants()
-            // store.restaurants = store.restaurantsAll
-            console.log('tutti i ristoranti', store.restaurantsAll);
-            console.log('store.restaurants', store.restaurants);
-        }
+    getAllRestaurants() {
+        axios.get('http://127.0.0.1:8000/api/restaurants/').then(r => {
+            store.restaurants = r.data.data
+            store.restaurantsAll = r.data.data
+            store.loading = false
+        })
+        .catch((error) => {
+            console.error(error);
+            store.loading = false;
+            router.push({ name: "error", params: { code: '404' } })
+        });
     },
+
+
     // CART FUNCTION (ADD,SUB)
     addProduct(item) {
         // CREAZIONE CARRELLO VUOTO SE NON ESISTE
