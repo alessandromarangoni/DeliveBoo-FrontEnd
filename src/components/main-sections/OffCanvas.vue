@@ -79,7 +79,7 @@ export default {
                             </button>
 
                             <router-link to="review" class="text-decoration-none">
-                                <button class="cssbuttons-io-button mt-3 mx-2"> Checkout
+                                <button class="cssbuttons-io-button mt-3 mx-2" aria-label="Close"  data-bs-dismiss="offcanvas" > Checkout
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                                             <path fill="none" d="M0 0h24v24H0z"></path>
