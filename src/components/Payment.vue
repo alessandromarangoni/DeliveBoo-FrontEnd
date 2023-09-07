@@ -126,10 +126,10 @@ export default {
                     <span class="text-black-50">{{item.price}} €</span>
                     <span class="text-black-50 ps-4">x{{item.quantity}}</span>
                 </div>
-                <div class="totale-checkout">
-                    <div class="d-flex align-items-center justify-content-around pe-5">
-                        <span class="ps-2 pt-3 ps-xl-5 fs-5 fw-semibold">{{store.total}} €</span>
-                    </div>
+            </div>
+            <div class="totale-checkout">
+                <div class="d-flex align-items-center justify-content-around pe-5">
+                    <span class="ps-2 pt-3 ps-xl-5 fs-5 fw-semibold">Totale: {{store.total}} €</span>
                 </div>
             </div>
         </div>
