@@ -97,7 +97,8 @@ export default {
                     // this.store.method.delete();
                     // this.$router.push({ path: '/restaurants', query: { success: true } });
                     console.log(resp);
-                    this.success = resp.data.success
+                    this.success = resp.data.success;
+                    store.cart=[];
                     console.log(this.success)
                 })
             })
