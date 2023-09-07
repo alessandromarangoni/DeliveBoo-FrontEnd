@@ -56,41 +56,72 @@ export default {
             fill="currentColor"></path>
     </svg>
 
-    <div class="d-flex align-items-center transform m-auto custom-card z-index">
-        <div class="content m-auto w-50 ">
-            <div class="text">
-                Inserisci i tuoi dati
+        <div class="d-flex align-items-center transform m-auto custom-card z-index">
+            <div class="content m-auto w-50 ">
+                <div class="text">
+                    Inserisci i tuoi dati
+                </div>
+                <form @submit.prevent="createOrder()">
+                    <div class="field">
+                        <input v-model="name" required type="text" class="input">
+                        <span class="span"></span>
+                        <label class="label">Nome completo</label>
+                    </div>
+
+                    <div class="field">
+                        <input v-model="address" required type="text" class="input">
+                        <span class="span"></span>
+                        <label class="label">Indirizzo</label>
+                    </div>
+
+                    <div class="field">
+                        <input v-model="telephone" required type="text" class="input">
+                        <span class="span"></span>
+                        <label class="label">Tel.</label>
+                    </div>
+
+                    <div class="field">
+                        <input v-model="email" required type="mail" class="input">
+                        <span class="span"></span>
+                        <label class="label">Email</label>
+                    </div>
+                    <div class="field">
+                        <input v-model="note" required type="text" class="input">
+                        <span class="span"></span>
+                        <label class="label">Note</label>
+                    </div>
+                    <button type="submit" class="button">Conferma</button>
+                </form>
+  
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Dettagli ordine:</button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="mb-5 pb-5 container-fluid">
+                        <h4>Il tuo ordine</h4>
+                        <div v-for="item in store.cart" class="w-100 text-start d-flex justify-content-between">
+                            <div class="ps-2 ps-xl-5">
+                                <h6 class="pt-2 ">{{ item.name }}</h6>
+                                <span class="text-black-50">{{ item.price }} €</span>
+                                <span class="text-black-50 ps-4">x{{ item.quantity }}</span>
+                            </div>
+                        </div>
+                        <div class="totale-checkout">
+                            <div class="d-flex align-items-center justify-content-around pe-5">
+                                <span class="ps-2 pt-3 ps-xl-5 fs-5 fw-semibold">Totale: {{ store.total }} €</span>
+                            </div>
+                        </div>
+                    </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <form @submit.prevent="createOrder()">
-                <div class="field">
-                    <input v-model="name" required type="text" class="input">
-                    <span class="span"></span>
-                    <label class="label">Nome completo</label>
-                </div>
-
-                <div class="field">
-                    <input v-model="address" required type="text" class="input">
-                    <span class="span"></span>
-                    <label class="label">Indirizzo</label>
-                </div>
-
-                <div class="field">
-                    <input v-model="telephone" required type="text" class="input">
-                    <span class="span"></span>
-                    <label class="label">Tel.</label>
-                </div>
-
-                <div class="field">
-                    <input v-model="email" required type="email" class="input" placeholder="Email">
-                    <span class="span"></span>
-                </div>
-                <div class="field">
-                    <input v-model="note" type="text" class="input" placeholder="Note">
-                    <span class="span"></span>
-                </div>
-                <button type="submit" class="button">Conferma</button>
-            </form>
-        </div>
+        
     </div>
     <div class="bg-custom position-fixed z-index-less">
         <svg class="wave-1hkxOo footerWave" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"
@@ -104,6 +135,8 @@ export default {
 </template>
 
 <style scoped lang="scss">
+
+
 .z-index-less {
     z-index: 0 !important;
 }
