@@ -14,11 +14,9 @@ export default {
 };
 </script>
 
-
 <template>
   <section class="container-fluid d-flex justify-content-center d-sm-none pb-10 pt-6">
     <div id="CategoriesSearch">
-
       <div class="d-flex flex-column align-items-center">
         <v-autocomplete 
         v-model="store.selectedCategories" 
@@ -35,40 +33,26 @@ export default {
         class="w-100"
         >
         </v-autocomplete>
-        <v-btn class="custom-button" @click="services.getDataByCategories()">
-          Cerca
-        </v-btn>
+        <v-btn class="custom-button" @click="services.getDataByCategories()"> Cerca </v-btn>
       </div>
-
     </div>
   </section>
 </template>
 
 <style>
-input {
-  width: 100%;
-}
-
-.custom-button{
-  border-radius:20px;
-}
-
-input:focus {
-  outline: none;
-}
-
-.SearchButton {
+input          { width: 100%;        }
+input:focus    { outline: none;      }
+.custom-button { border-radius:20px; }
+.SearchButton  {
   padding: 0.5em 1.5em;
   background-color: rgba(255, 225, 201, 0.384);
   border-radius: 0.5rem;
 }
-
 #CategoriesSearch {
   width: 300px;
   padding: 0 !important;
   margin: 0 !important;
 }
-
 @media screen and (min-width: 576px) {
   #CategoriesSearch {
     margin-left: 100px !important;

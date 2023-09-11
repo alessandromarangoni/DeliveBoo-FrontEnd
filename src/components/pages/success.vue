@@ -1,6 +1,6 @@
 <script>
 import AppHeader from "../AppHeader.vue";
-import AnotherFooter from "../main-sections/AnotherFooter.vue";
+import AppFooter from "../main-sections/AppFooter.vue";
 import { store } from "../../stores/store";
 import axios from "axios";
 
@@ -8,27 +8,16 @@ export default {
   name: "CustomerData",
   components: {
     AppHeader,
-    AnotherFooter,
+    AppFooter,
   },
 };
 </script>
 
 <template>
   <AppHeader />
-  <svg
-    class="wave-1hkxOo headerWave"
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 1440 100"
-    preserveAspectRatio="none"
-  >
-    <path
-      class="wavePath-haxJK1 animationPaused-2hZ4IO"
-      d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z"
-      fill="currentColor"
-    ></path>
+  <svg class="wave-1hkxOo headerWave" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+    <path class="wavePath-haxJK1 animationPaused-2hZ4IO" d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z" fill="currentColor" ></path>
   </svg>
-
   <div class="vh-50 d-flex align-items-center justify-content-center pt-16">
     <div class="container">
       <div class="left-side">
@@ -47,58 +36,38 @@ export default {
       </div>
       <div class="right-side">
         <div class="new fw-semibold">Pagamento Avvenuto!</div>
-
-        <svg
-          viewBox="0 0 451.846 451.847"
-          height="512"
-          width="512"
-          xmlns="http://www.w3.org/2000/svg"
-          class="arrow"
-        >
-          <path
-            fill="#cfcfcf"
-            data-old_color="#000000"
-            class="active-path"
-            data-original="#000000"
-            d="M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z"
-          ></path>
+        <svg viewBox="0 0 451.846 451.847" height="512" width="512" xmlns="http://www.w3.org/2000/svg" class="arrow" >
+          <path fill="#cfcfcf" data-old_color="#000000" class="active-path" data-original="#000000" d="M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z" ></path>
         </svg>
       </div>
     </div>
     <div class="bg-custom position-fixed z-index-less">
-        <svg class="wave-1hkxOo footerWave" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"
-            preserveAspectRatio="none">
-            <path class="wavePath-haxJK1 animationPaused-2hZ4IO"
-                d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z"
-                fill="currentColor"></path>
+        <svg class="wave-1hkxOo footerWave" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <path class="wavePath-haxJK1 animationPaused-2hZ4IO" d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z" fill="currentColor"></path>
         </svg>
-        <AnotherFooter />
+        <AppFooter />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-
 .bg-custom {
     background-color: #F96A5F;
     margin-left: 100px;
     width: calc(100% - 100px);
     bottom: 0
 }
-
 .footerWave {
   z-index: -1 !important;
   color: #f96a5f;
   position: absolute;
   bottom: 50px;
 }
-
 .headerWave {
   margin-top: -3px;
   color: white;
   background-color: #90d4ce;
 }
-
 .container {
   background-color: #ffffff;
   display: flex;
@@ -108,16 +77,13 @@ export default {
   border-radius: 6px;
   transition: 0.3s ease-in-out;
 }
-
 .container:hover {
   transform: scale(1.03);
   width: 220px;
 }
-
 .container:hover .left-side {
   width: 100%;
 }
-
 .left-side {
   background-color: #5de2a3;
   width: 130px;
@@ -132,7 +98,6 @@ export default {
   flex-shrink: 0;
   overflow: hidden;
 }
-
 .right-side {
   width: calc(100% - 130px);
   display: flex;
@@ -143,23 +108,19 @@ export default {
   white-space: nowrap;
   transition: 0.3s;
 }
-
 .right-side:hover {
   background-color: #f9f7f9;
 }
-
 .arrow {
   width: 20px;
   height: 20px;
   margin-right: 20px;
 }
-
 .new {
   font-size: 23px;
   font-family: "Lexend Deca", sans-serif;
   margin-left: 20px;
 }
-
 .custom-card {
   width: 70px;
   height: 46px;
@@ -174,7 +135,6 @@ export default {
   -moz-box-shadow: 9px 9px 9px -2px rgba(77, 200, 143, 0.72);
   -webkit-box-shadow: 9px 9px 9px -2px rgba(77, 200, 143, 0.72);
 }
-
 .custom-card-line {
   width: 65px;
   height: 13px;
@@ -182,21 +142,17 @@ export default {
   border-radius: 2px;
   margin-top: 7px;
 }
-
 @media only screen and (max-width: 480px) {
   .container {
     transform: scale(0.7);
   }
-
   .container:hover {
     transform: scale(0.74);
   }
-
   .new {
     font-size: 18px;
   }
 }
-
 .buttons {
   width: 8px;
   height: 8px;
@@ -207,37 +163,30 @@ export default {
   transform: rotate(90deg);
   margin: 10px 0 0 -30px;
 }
-
 .container:hover .custom-card {
   animation: slide-top 1.2s cubic-bezier(0.645, 0.045, 0.355, 1) both;
 }
-
 .container:hover .post {
   animation: slide-post 1s cubic-bezier(0.165, 0.84, 0.44, 1) both;
 }
-
 @keyframes slide-top {
   0% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
-
   50% {
     -webkit-transform: translateY(-70px) rotate(90deg);
     transform: translateY(-70px) rotate(90deg);
   }
-
   60% {
     -webkit-transform: translateY(-70px) rotate(90deg);
     transform: translateY(-70px) rotate(90deg);
   }
-
   100% {
     -webkit-transform: translateY(-8px) rotate(90deg);
     transform: translateY(-8px) rotate(90deg);
   }
 }
-
 .post {
   width: 63px;
   height: 75px;
@@ -249,7 +198,6 @@ export default {
   border-radius: 6px;
   overflow: hidden;
 }
-
 .post-line {
   width: 47px;
   height: 9px;
@@ -259,7 +207,6 @@ export default {
   right: 8px;
   top: 8px;
 }
-
 .post-line:before {
   content: "";
   position: absolute;
@@ -268,7 +215,6 @@ export default {
   background-color: #757375;
   top: -8px;
 }
-
 .screen {
   width: 47px;
   height: 23px;
@@ -278,7 +224,6 @@ export default {
   right: 8px;
   border-radius: 3px;
 }
-
 .numbers {
   width: 12px;
   height: 12px;
@@ -290,7 +235,6 @@ export default {
   left: 25px;
   top: 52px;
 }
-
 .numbers-line2 {
   width: 12px;
   height: 12px;
@@ -308,13 +252,11 @@ export default {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
-
   100% {
     -webkit-transform: translateY(-70px);
     transform: translateY(-70px);
   }
 }
-
 .dollar {
   position: absolute;
   font-size: 16px;
@@ -325,62 +267,30 @@ export default {
   color: #4b953b;
   text-align: center;
 }
-
 .container:hover .dollar {
   animation: fade-in-fwd 0.3s 1s backwards;
 }
-
 @keyframes fade-in-fwd {
   0% {
     opacity: 0;
     transform: translateY(-5px);
   }
-
   100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 @media screen and (max-width:577px) {
-    .content {
-        width: 70% !important;
-    }
-
     .footerWave {
         bottom: 80px;
     }
-
     .bg-custom {
         background-color: #F96A5F;
         margin-left: 0;
         width: 100%;
         bottom: 80px
     }
-
-    .content {
-        width: 90% !important;
-    }
-
 }
-
-@media screen and (min-width:577px) and (max-width:780px) {
-    .content {
-        width: calc(70%) !important;
-        margin-left: 20% !important;
-    }
-}
-
-@media screen and (min-width:1400px) {
-    .content {
-        width: 30% !important;
-    }
-
-    .transform {
-        transform: translateY(-50%);
-    }
-}
-
 @media screen and (max-width: 959px) {
     .footerWave {
         bottom: 95px;

@@ -11,7 +11,6 @@ import { services } from '../../stores/services';
             }
         },
         methods: {
-
         },
         created() {
             let localeStorageCart = localStorage.getItem('cart')
@@ -22,7 +21,6 @@ import { services } from '../../stores/services';
                 store.cart = [];
             }
         },
-
     }
 </script>
 <!-- //  al refresh della pagina il carrello risulta vuoto -->
@@ -66,40 +64,32 @@ import { services } from '../../stores/services';
 </template>
 
 <style scoped lang="scss">
-
 #style-7::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	background-color: #F5F5F5;
 	border-radius: 10px;
 }
-
 #style-7::-webkit-scrollbar
 {
 	width: 10px;
 	background-color: #F5F5F5;
 }
-
 #style-7::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
 	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(122,153,217)), color-stop(0.72, rgb(73,125,189)), color-stop(0.86, rgb(28,58,148)));
 }
-
-
 .set-height{
     height: 350px;
     overflow-y:scroll ;
 }
-
 .card-custom-menu {
   min-width: 250px;
   height: 454px;
   background: rgb(255, 255, 255);
   border-radius: 40px 5px 40px 5px;
 }
-
-
 .totale-checkout{
   background-color: #F5F5F5;  
   height: 70px;
@@ -109,7 +99,6 @@ import { services } from '../../stores/services';
   right: 0;
   width: 100%; /* Occupa l'intera larghezza del genitore */
 }
-    
 .custom-imput{
     height: 25px;
     width: 25px;
@@ -122,7 +111,6 @@ import { services } from '../../stores/services';
 .custom-icon{
     transform: translate(5% , 5%);
 }
-
 .plus{
     border: 3px solid rgba(78, 223, 78, 0.842);
     &:hover{
@@ -133,7 +121,6 @@ import { services } from '../../stores/services';
         scale: 1.0;
     }
 }
-
 .minus{
     border: 3px solid rgba(223, 107, 78, 0.863);
     &:hover{
@@ -144,7 +131,6 @@ import { services } from '../../stores/services';
         scale: 1.0;
     }
 }
-
 .cssbuttons-io-button {
   background: #F96A5F;
   color: white;
@@ -164,7 +150,6 @@ import { services } from '../../stores/services';
   height: 2.8em;
   padding-right: 2.8em;
 }
-
 .cssbuttons-io-button .icon {
   background: white;
   position: absolute;
@@ -178,21 +163,17 @@ import { services } from '../../stores/services';
   right: 0.3em;
   transition: all 0.3s;
 }
-
 .cssbuttons-io-button:hover .icon {
   width: calc(100% - 0.6em);
 }
-
 .cssbuttons-io-button .icon svg {
   width: 1.1em;
   transition: transform 0.3s;
   color: #F96A5F;
 }
-
 .cssbuttons-io-button:hover .icon svg {
   transform: translateX(0.1em);
 }
-
 @media screen and (min-width: 1100px) {
         .card-custom-menu {
             width: 350px;

@@ -6,7 +6,6 @@ import NotFound from './components/NotFound.vue'
 import Payment from './components/Payment.vue'
 import success from './components/pages/success.vue';
 
-
 const router = createRouter({
     history: createWebHistory(),
         routes: [
@@ -40,8 +39,6 @@ const router = createRouter({
                 name: 'success',
                 component: success
             }
-
         ]
-
     });
 export { router };

@@ -45,7 +45,6 @@ export default {
             </v-sheet>
         </div>
     </div>
-
     <div class="d-none d-sm-flex text-center justify-content-center">
         <div v-show="store.selectedCategories.length > 0">
             <span class="d-block pt-3 fw-bolder text-center text-black-50 pe-2">Categorie Selezionate: </span>
@@ -55,25 +54,22 @@ export default {
         </template>
     </div>
 </template>
+
 <style scoped lang="scss">
 @import "/src/variables.scss";
-
 .categorieFont{
     font-family:Arial, Helvetica, sans-serif;
     font-weight:800;
     font-size: 21px ;
     color: white!important;
 }
-
 .active-category {
     border: 2px solid orange;
     box-shadow: 0 0 2px 1px orange;
-
     img {
         filter: blur(1px);
     }
 }
-
 .slider-cards-title {
     top: 50%;
     left: 50%;
@@ -83,13 +79,11 @@ export default {
     transform: translate(-50%, -50%);
     color: rgb(255, 255, 255);
 }
-
 .carousel-cards {
     background-color: $light-orange;
     width: 150px;
     height: 75px;
 }
-
 .carousel-container {
     border-radius: 50px !important;
     background: rgba(255, 225, 201, 0.384);
@@ -100,47 +94,9 @@ export default {
     -webkit-box-shadow: inset 0px 1px 15px 5px #ffffff;
     box-shadow: inset 0px 1px 25px 5px #ffffff73;
 }
-
 @media screen and (max-width: 786px) {
-   
    #CategoriesCarousel{
     display: none !important;
    }
-   
-   
-   
-    // .carousel-cards{
-    //     width: 100px;
-    //     height: 50px;
-    // }
-    // .carousel-container{
-    //     height: auto;
-    // }
-    // .text-custom{
-    //     font-size: 1rem !important;
-    // }
 }
-
-// @media screen and (min-width:576px) and (max-width:768px){
-
-//     .carousel-container{
-//         max-width: 50% !important;
-//         height: auto;
-//     }
-//     .carousel-cards{
-//         width: 100px;
-//         height: 50px;
-//     }
-// }
-
-//     .align-center-on-md{
-//             width: calc(100% - 100px);
-//         }
-
-//     @media screen and (max-width: 577px){
-//         .align-center-on-md{
-//             width:100%;
-//         }
-//     }
-
 </style>
