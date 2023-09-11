@@ -40,8 +40,8 @@ export default{
 </template>
 
 <style scoped lang="scss">
-.headerWave{ margin-top: -3px; color:white ; background-color: #90d4ce;  }
-.footerWave{ z-index: -2; color: #f96a5f; position: absolute; bottom: 50px;}
+.headerWave{ margin-top: -3px; color:white ; background-color: #90d4ce; max-height: 50px; width: 100%;  }
+.footerWave{ z-index: -2; color: #f96a5f; position: absolute; bottom: 50px; max-height: 50px; width: 100%;}
 footer{
     width: calc(100% - 100px );
     background-color: #f96a5f;
@@ -53,7 +53,7 @@ footer{
     right: 0;
 }
 .paddingBottom{
-    padding-bottom: 120px;
+    padding-bottom: 180px;
 }
 @media screen and (max-width: 959px) {
     .footerWave{
@@ -62,7 +62,7 @@ footer{
 }
 @media screen and (max-width: 575px) {
     .paddingBottom{
-        padding-bottom: 180px;
+        padding-bottom: 250px;
     }
     .footerWave{
         bottom: 180px;
