@@ -49,7 +49,7 @@ export default {
     <svg class="wave-1hkxOo headerWave" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
         <path class="wavePath-haxJK1 animationPaused-2hZ4IO" d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z" fill="currentColor"></path>
     </svg>
-        <div class="d-flex align-items-center transform m-auto custom-card z-index">
+        <div class="d-flex align-items-center transform m-auto custom-card z-index ">
             <div class="content m-auto w-50 ">
                 <div class="text">
                     Inserisci i tuoi dati
@@ -85,7 +85,7 @@ export default {
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Dettagli ordine:</button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" >
+                        <div id="collapseOne" class="accordion-collapse collapse " >
                             <div class="accordion-body">
                                 <div class="mb-5 pb-5 container-fluid">
                                     <h4>Il tuo ordine</h4>
@@ -108,8 +108,8 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="bg-custom position-fixed z-index-less">
-            <svg class="wave-1hkxOo footerWave" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <div class="bg-custom position-relative z-index-less">
+            <svg class="wave-1hkxOo footerWave position-absolute" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
                 <path class="wavePath-haxJK1 animationPaused-2hZ4IO" d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z" fill="currentColor"></path>
             </svg>
             <AppFooter />
@@ -123,16 +123,11 @@ export default {
 .z-index {
     z-index: 99 !important;
 }
-.footerWave {
-    z-index: -1 !important;
-    color: #f96a5f;
-    position: absolute;
-    bottom: 50px;
-}
-.headerWave {
-    margin-top: -3px;
-    color: white;
-    background-color: #90d4ce;
+.headerWave{ margin-top: -3px; color:white ; background-color: #90d4ce; max-height: 50px; width: 100%;  }
+.footerWave{ z-index: -2; color: #f96a5f; position: absolute; bottom: 50px; max-height: 50px; width: 100%;}
+
+.custom-card{
+    padding-left: 100px;
 }
 .bg-custom {
     background-color: #F96A5F;
@@ -217,6 +212,10 @@ export default {
         inset -5px -5px 10px #ffffff73;
 }
 @media screen and (max-width:577px) {
+    .custom-card{
+    padding-left: 0px;
+    padding-top: 50px;
+}
     .content {
         width: 70% !important;
     }

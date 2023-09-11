@@ -57,17 +57,8 @@ export default {
     width: calc(100% - 100px);
     bottom: 0
 }
-.footerWave {
-  z-index: -1 !important;
-  color: #f96a5f;
-  position: absolute;
-  bottom: 50px;
-}
-.headerWave {
-  margin-top: -3px;
-  color: white;
-  background-color: #90d4ce;
-}
+.headerWave{ margin-top: -3px; color:white ; background-color: #90d4ce; max-height: 50px; width: 100%;  }
+.footerWave{ z-index: -2; color: #f96a5f; position: absolute; bottom: 50px; max-height: 50px; width: 100%;}
 .container {
   background-color: #ffffff;
   display: flex;
