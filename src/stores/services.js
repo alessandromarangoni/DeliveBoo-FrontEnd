@@ -12,7 +12,6 @@ export const services = {
         else {
             store.selectedCategories.push(item)
         };
-        console.log("Categorie selezionate:", store.selectedCategories)
         this.getDataByCategories()
     },
             
@@ -24,7 +23,6 @@ export const services = {
                 store.categories.forEach(element => {
                     store.CategoriesName.push(element.name)
                 });
-                console.log(store.categories)
             })
             .catch((error) => {
                 this.loading = false;
@@ -34,7 +32,6 @@ export const services = {
             });
     },
     getDataByCategories() {
-        console.log('parte la query', store.selectedCategories);
         if (store.selectedCategories.length > 0) {
             axios.get('http://127.0.0.1:8000/api/restaurants/by-categories', {
                 params: {
@@ -43,7 +40,6 @@ export const services = {
             })
                 .then(response => {
                     store.restaurants = response.data
-                    console.log("Ristoranti trovati", store.restaurants);
                 })
                 .catch((error) => {
                     this.loading = false;
@@ -53,9 +49,6 @@ export const services = {
                 });
         } else {
             this.getAllRestaurants()
-            // store.restaurants = store.restaurantsAll
-            console.log('tutti i ristoranti', store.restaurantsAll);
-            console.log('store.restaurants', store.restaurants);
         }
     },
 
@@ -82,7 +75,6 @@ export const services = {
         const cart = JSON.parse(localStorage.getItem('cart'));
 
         if (cart.some((e) => e.restaurant_id !== item.restaurant_id)) {
-            console.log('Nel carrello hai già prodotti di un altro ristorante. Svuota prima il carrello!');
             store.warning = true;
             // blocca la funzione se nel carrello ci sono prodotti di un ristorante diverso
             return
@@ -114,7 +106,6 @@ export const services = {
             if (existItem.quantity <= 1) {
                 const index = cart.indexOf(existItem);
                 cart.splice(index, 1);
-                console.log(cart);
             } else {
                 existItem.quantity--
             }

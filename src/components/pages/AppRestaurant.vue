@@ -24,8 +24,6 @@ import axios from 'axios';
                   this.loading=false,
                   store.selectedRestaurant = response.data.results.restaurant
                   store.menu = response.data.results.products
-                  console.log(store.selectedRestaurant);
-                  console.log(response.data.results.products);
                 })
                 .catch((error) => {
                   this.loading = false;

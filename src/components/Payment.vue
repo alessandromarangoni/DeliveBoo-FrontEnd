@@ -66,7 +66,6 @@ export default {
             await axios.get("http://127.0.0.1:8000/api/orders/generate")
                 .then(response => {
                     this.token = response.data.token;
-                    console.log("Token ottenuto con successo:", this.token);
                 })
                 .catch(error => {
                     console.error("Errore durante il recupero del token:", error);
@@ -81,14 +80,12 @@ export default {
                     // array oggetto user
                 }).then(resp => {
                     // this.store.method.delete();
-                    console.log(resp);
                     this.success = resp.data.success;
                     if(this.success == true ){
                         store.cart=[];
                         services.cleanCart()
                         this.$router.push('/success')
                     }
-                    console.log(this.success)
                 })
             })
                 .catch(err => {

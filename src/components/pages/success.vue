@@ -1,8 +1,6 @@
 <script>
 import AppHeader from "../AppHeader.vue";
 import AppFooter from "../main-sections/AppFooter.vue";
-import { store } from "../../stores/store";
-import axios from "axios";
 
 export default {
   name: "CustomerData",

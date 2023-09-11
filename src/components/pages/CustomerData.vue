@@ -34,7 +34,6 @@ export default {
             }
             axios.post('http://127.0.0.1:8000/api/orders/', data)
                 .then(res => {
-                    console.log(res.data.order.id);
                     this.$router.push({ name: "Payment", params: { id: res.data.order.id } })
                 }).catch(err => {
                     console.log(err);
