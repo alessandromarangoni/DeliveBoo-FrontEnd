@@ -122,6 +122,7 @@ export const services = {
     cleanCart() {
         localStorage.removeItem("cart")
         store.cart = [];
+        store.total = 0;
     },
     sumPrice(){
         let sum = 0

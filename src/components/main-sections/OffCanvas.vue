@@ -1,6 +1,7 @@
 <script>
 import { store } from '../../stores/store.js';
 import { services } from '../../stores/services';
+import { router } from '../../router';
 
 export default {
     name: "OffCanvas",
@@ -13,6 +14,9 @@ export default {
         }
     },
     methods: {
+        checkout() {
+            router.push({ path: '/review' })
+        }
     },
     created() {
         let localeStorageCart = localStorage.getItem('cart')
@@ -72,7 +76,7 @@ export default {
                                     </svg>
                                 </div>
                             </button>
-                            <router-link to="review" class="text-decoration-none">
+                            <button @click="checkout()" class="text-decoration-none">
                                 <button class="cssbuttons-io-button mt-3 mx-2" aria-label="Close"  data-bs-dismiss="offcanvas" > Checkout
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -81,7 +85,7 @@ export default {
                                         </svg>
                                     </div>
                                 </button>
-                            </router-link>
+                            </button>
                         </div>
                     </div>
                 </div>
