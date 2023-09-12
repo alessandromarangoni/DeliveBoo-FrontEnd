@@ -135,7 +135,7 @@ export default {
     bottom: 0
 }
 .transform {
-    transform: translateY(-35%);
+    transform: translateY(-25%);
 }
 .content {
     width: 70%;
@@ -242,7 +242,7 @@ export default {
         width: 30% !important;
     }
     .transform {
-        transform: translateY(-50%);
+        // transform: translateY(-50%);
     }
 }
 @media screen and (max-width: 959px) {
