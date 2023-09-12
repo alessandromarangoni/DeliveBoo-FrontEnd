@@ -1,6 +1,7 @@
 <script>
 import { store } from '../../stores/store.js';
 import { services } from '../../stores/services';
+// import axios from 'axios';
 
 export default {
     name: "AppMenu",
@@ -16,7 +17,17 @@ export default {
             if (found) {
                 return found.quantity
             }
-        }
+        },
+        // getUserData() {
+        //     axios.get('https://api.ipify.org?format=json').then((res) => {
+        //         console.log(res)
+
+        //         }
+        //     )
+        // }
+    },
+    mounted() {
+        // this.getUserData()
     }
 }
 </script>

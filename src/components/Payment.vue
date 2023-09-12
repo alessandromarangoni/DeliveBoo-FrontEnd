@@ -17,10 +17,13 @@ export default {
             token: "",
             store,
             success:'',
-            services
+            services,
+            hostedFieldInstance: null,
+            hostedFieldInitialized: false
         }
     },
     async mounted() {
+        if (!this.hostedFieldInitialized) {
         // token
         axios.get('http://127.0.0.1:8000/api/orders/generate').then((res) => {
             braintree.client.create({
@@ -54,13 +57,15 @@ export default {
                     return braintree.hostedFields.create(options)
                 })
                 .then(hostedFieldInstance => {
-                    this.hostedFieldInstance = hostedFieldInstance;
-                })
+                        this.hostedFieldInstance = hostedFieldInstance;
+                        this.hostedFieldInitialized = true; 
+                    })
                 .catch(err => {
                     console.log(err);
                 });
         })
-    },
+    }
+},
     methods: {
         async getToken() {
             await axios.get("http://127.0.0.1:8000/api/orders/generate")
